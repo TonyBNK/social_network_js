@@ -1,0 +1,8 @@
+.head img{
+    width: 50px;
+}
+
+.head{
+    grid-area: h;
+    background-color: green;
+}
