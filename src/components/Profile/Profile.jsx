@@ -1,20 +1,12 @@
 import React from 'react';
-import p from './Profile.module.css';
+import c from './Profile.module.css';
 import {MyPosts} from "./MyPosts/MyPosts";
-import azgard from './../../img/azgard.jpg';
-import cat_with_glasses from './../../img/cat_with_glasses.jpg'
+import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 
 export const Profile = () => {
     return (
-        <div className={p.content}>
-            <div>
-                <img src={azgard}
-                     alt="типа космос"/>
-            </div>
-            <div>
-                <img src={cat_with_glasses} alt="котэ" width={150}/>
-                + description
-            </div>
+        <div>
+            <ProfileInfo/>
             <MyPosts/>
         </div>
     );
