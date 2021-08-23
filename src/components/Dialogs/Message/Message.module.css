@@ -1,0 +1,11 @@
+.message{
+    padding: 20px;
+}
+
+.message:nth-child(odd){
+
+}
+
+.message:nth-child(even){
+
+}

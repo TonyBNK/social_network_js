@@ -2,13 +2,10 @@
     display: grid;
     grid-template-columns: 2fr 10fr;
     padding: 10px;
+    position: relative;
 }
 
-.dialog a{
-    color: white;
-    text-decoration: none;
+.messages{
+
 }
 
-.dialog a.active {
-    color: gold;
-}
