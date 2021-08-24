@@ -1,6 +1,6 @@
 import React from "react";
-import azgard from "../../../img/azgard.jpg";
-import cat_with_glasses from "../../../img/cat_with_glasses.jpg";
+import azgard from "../../../../../img/azgard.jpg";
+import cat_with_glasses from "../../../../../img/cat_with_glasses.jpg";
 import c from './ProfileInfo.module.css';
 
 export const ProfileInfo = () => {

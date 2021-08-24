@@ -1,14 +1,8 @@
 .navigator{
     grid-area: n;
-    background-color: burlywood;
-    padding: 20px;
+    background-color: brown;
+    display: grid;
+    grid-template-rows: 200px 1fr;
+    grid-template-areas: 'menu' 'friends';
 }
 
-.item a{
-    color: white;
-    text-decoration: none;
-}
-
-.item a.active{
-    color: gold;
-}

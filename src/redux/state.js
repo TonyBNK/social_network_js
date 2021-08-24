@@ -26,5 +26,14 @@ export let state = {
             {id: 2, message: 'Bark'},
             {id: 3, message: "What's up?"},
         ]
+    },
+    friendsPage: {
+        friends: [
+            {id: 1, name: "Cat", ava: vsratiy_cat},
+            {id: 2, name: "Doge", ava: doge},
+            {id: 3, name: "Hamster", ava: hamster},
+            {id: 4, name: "Parrot", ava: parrot},
+            {id: 5, name: "Turtle", ava: turtle},
+        ]
     }
 }

@@ -1,8 +1,12 @@
 .head img{
     width: 50px;
+    align-self: center;
+    justify-self: center;
 }
 
 .head{
+    display: grid;
+    grid-template-columns: 60px 1fr;
     grid-area: h;
     background-color: green;
 }
