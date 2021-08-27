@@ -5,35 +5,44 @@ import doge from '../img/doge.jpg';
 import hamster from '../img/hamster.jpg';
 import parrot from '../img/parrot.jpg';
 import turtle from '../img/turtle.jpg';
+import {v1} from "uuid";
+import cat_with_glasses from '../img/cat_with_glasses.jpg';
+import {renderEntireTree} from "../render";
 
-export let state = {
+export const data = {
     profilePage: {
         posts: [
-            {id: 1, ava: cat_with_tongue, message: "Кто насрал в мой лоток?", likes: 5},
-            {id: 2, ava: angry_cat, message: "Кожанный мешок опять забыл покормить :(", likes: 7},
-        ],
+            {id: v1(), ava: cat_with_tongue, message: "Кто насрал в мой лоток?", likesCount: 14},
+            {id: v1(), ava: angry_cat, message: "Кожанный мешок опять забыл покормить }:(", likesCount: 23},
+        ]
     },
     dialogsPage: {
         dialogs: [
-            {id: 1, name: "Cat", ava: vsratiy_cat},
-            {id: 2, name: "Doge", ava: doge},
-            {id: 3, name: "Hamster", ava: hamster},
-            {id: 4, name: "Parrot", ava: parrot},
-            {id: 5, name: "Turtle", ava: turtle},
+            {id: v1(), name: "Cat", ava: vsratiy_cat},
+            {id: v1(), name: "Doge", ava: doge},
+            {id: v1(), name: "Parrot", ava: parrot},
+            {id: v1(), name: "Hamster", ava: hamster},
+            {id: v1(), name: "Turtle", ava: turtle},
         ],
         messages: [
-            {id: 1, message: 'So much wow!'},
-            {id: 2, message: 'Bark'},
-            {id: 3, message: "What's up?"},
+            {id: v1(), message: 'So much wow!'},
+            {id: v1(), message: 'Bark'},
+            {id: v1(), message: "What's up?"},
         ]
     },
     friendsPage: {
         friends: [
-            {id: 1, name: "Cat", ava: vsratiy_cat},
-            {id: 2, name: "Doge", ava: doge},
-            {id: 3, name: "Hamster", ava: hamster},
-            {id: 4, name: "Parrot", ava: parrot},
-            {id: 5, name: "Turtle", ava: turtle},
+            {id: v1(), name: "Cat", ava: vsratiy_cat},
+            {id: v1(), name: "Doge", ava: doge},
+            {id: v1(), name: "Parrot", ava: parrot},
+            {id: v1(), name: "Hamster", ava: hamster},
+            {id: v1(), name: "Turtle", ava: turtle},
         ]
     }
 }
+
+export const addPost = (postMessage) => {
+    data.profilePage.posts.unshift({id: v1(), ava: cat_with_glasses, message: postMessage, likesCount: 0});
+    renderEntireTree(data);
+}
+

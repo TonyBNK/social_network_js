@@ -2,30 +2,29 @@ import React from "react";
 import './App.css';
 import {Header} from "./components/Header/Header";
 import {Navbar} from "./components/Navbar/Navbar";
-import {Profile} from "./components/Navbar/Menu/Profile/Profile";
-import {Dialogs} from "./components/Navbar/Menu/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
-import {News} from "./components/Navbar/Menu/News/News";
-import {Music} from "./components/Navbar/Menu/Music/Music";
-import {Settings} from "./components/Navbar/Menu/Settings/Settings";
-import {Friends} from "./components/Navbar/Friends/Friends";
+import {Profile} from "./components/Profile/Profile";
+import {Dialogs} from "./components/Dialogs/Dialogs";
+import {Route} from "react-router-dom";
+import {News} from "./components/News/News";
+import {Music} from "./components/Music/Music";
+import {Settings} from "./components/Settings/Settings";
+import logo from './img/logo.png'
+
 
 const App = (props) => {
     return (
-        <BrowserRouter>
-            <div className={"app-wrapper"}>
-                <Header/>
-                <Navbar friendsPage={props.state.friendsPage}/>
-                <div className={"app-wrapper-content"}>
-                    <Route path='/profile' render={() => <Profile profilePage={props.state.profilePage}/>}/>
-                    <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
-                    <Route path='/news' render={() => <News/>}/>
-                    <Route path='/music' render={() => <Music/>}/>
-                    <Route path='/settings' render={() => <Settings/>}/>
-                    <Route path='/friends' render={() => <Friends/>}/>
-                </div>
-            </div>
-        </BrowserRouter>
+        <div className="app-wrapper">
+            <Header logotype={logo}/>
+            <Navbar friends={props.data.friendsPage.friends}/>
+
+            <Route path='/profile' render={() => <Profile posts={props.data.profilePage.posts}
+                                                          addPost={props.addPost}/>}/>
+            <Route path='/dialogs' render={() => <Dialogs dialogs={props.data.dialogsPage.dialogs}
+                                                          messages={props.data.dialogsPage.messages}/>}/>
+            <Route path='/news' render={() => <News/>}/>
+            <Route path='/music' render={() => <Music/>}/>
+            <Route path='/settings' render={() => <Settings/>}/>
+        </div>
     );
 }
 

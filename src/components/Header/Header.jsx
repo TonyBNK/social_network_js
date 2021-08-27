@@ -1,13 +1,10 @@
 import React from "react";
-import h from './Header.module.css';
-import logo from './../../img/logo.png';
+import c from './Header.module.css';
 
-export const Header = () => {
-    return(
-    <header className={h.head}>
-        <img
-            src={logo}
-            alt="типа картинка"/>
-    </header>
+export const Header = (props) => {
+    return (
+        <header className={c.head}>
+            <img src={props.logotype} alt="логотип"/>
+        </header>
     );
 };
