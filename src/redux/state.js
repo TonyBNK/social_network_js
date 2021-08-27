@@ -7,7 +7,6 @@ import parrot from '../img/parrot.jpg';
 import turtle from '../img/turtle.jpg';
 import {v1} from "uuid";
 import cat_with_glasses from '../img/cat_with_glasses.jpg';
-import {renderEntireTree} from "../render";
 
 export const data = {
     profilePage: {
@@ -42,7 +41,6 @@ export const data = {
 }
 
 export const addPost = (postMessage) => {
-    data.profilePage.posts.unshift({id: v1(), ava: cat_with_glasses, message: postMessage, likesCount: 0});
-    renderEntireTree(data);
+    return data.profilePage.posts.unshift({id: v1(), ava: cat_with_glasses, message: postMessage, likesCount: 0});
 }
 
