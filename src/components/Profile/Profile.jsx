@@ -12,7 +12,9 @@ export const Profile = (props) => {
             <ProfileInfo titleImage={azgard}
                          ava={cat_wit_glasses}/>
             <Posts posts={props.posts}
-                   addPost={props.addPost}/>
+                   newPostText={props.newPostText}
+                   updatePostText={props.updatePostText}
+                   addPostText={props.addPostText}/>
         </div>
     );
 };

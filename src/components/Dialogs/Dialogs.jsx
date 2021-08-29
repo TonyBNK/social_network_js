@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import c from './Dialogs.module.css';
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
@@ -9,9 +9,13 @@ export const Dialogs = (props) => {
     let messagesElements = props.messages.map(m => <Message message={m.message}/>);
 
     let newMessageText = React.createRef();
-    const getText = () => {
-        alert(newMessageText.current.value);
-        newMessageText.current.value = '';
+
+    const onChangeHandler = (e) => {
+        props.updateMessageText(e.currentTarget.value);
+    }
+
+    const onClickHandler = () => {
+        props.addMessageText(newMessageText.current.value);
     }
 
     return (
@@ -22,8 +26,10 @@ export const Dialogs = (props) => {
             <div className={c.messages}>
                 {messagesElements}
                 <div className={c.newMessage}>
-                    <textarea cols="30" rows="10" ref={newMessageText}></textarea>
-                    <button onClick={getText}>Send</button>
+                    <textarea ref={newMessageText}
+                              value={props.newMessageText}
+                              onChange={onChangeHandler}/>
+                    <button onClick={onClickHandler}>Send</button>
                 </div>
             </div>
         </div>
