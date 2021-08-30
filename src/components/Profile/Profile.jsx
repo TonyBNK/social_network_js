@@ -11,10 +11,7 @@ export const Profile = (props) => {
         <div className={c.profile}>
             <ProfileInfo titleImage={azgard}
                          ava={cat_wit_glasses}/>
-            <Posts posts={props.posts}
-                   newPostText={props.newPostText}
-                   updatePostText={props.updatePostText}
-                   addPostText={props.addPostText}/>
+            <Posts posts={props.profilePage}/>
         </div>
     );
 };

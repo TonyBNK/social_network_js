@@ -6,7 +6,7 @@ export const Posts = (props) => {
 
     let newPostText = React.createRef();
 
-    let postsForProfile = props.posts.map(p =>
+    let postsForProfile = props.posts.getState().profilePage.posts.map(p =>
         <Post id={p.id}
               ava={p.ava}
               message={p.message}
@@ -14,11 +14,11 @@ export const Posts = (props) => {
     );
 
     const onChangeHandler = (e) => {
-        props.updatePostText(e.currentTarget.value);
+        props.posts.setNewPost(e.currentTarget.value);
     }
 
     const onClickHandler = () => {
-        props.addPostText(newPostText.current.value);
+        props.posts.addNewPost(newPostText.current.value);
     }
 
     return (
@@ -27,7 +27,7 @@ export const Posts = (props) => {
             <div className={c.newPost}>
                 <div>
                     <textarea ref={newPostText}
-                              value={props.newPostText}
+                              value={props.posts.getState().profilePage.newPost.text}
                               onChange={onChangeHandler}/>
                 </div>
                 <div>
