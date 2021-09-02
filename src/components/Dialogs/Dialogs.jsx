@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React from "react";
 import c from './Dialogs.module.css';
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
+import {addNewMessageActionCreator, setNewMessageActionCreator} from "../../redux/store";
 
 export const Dialogs = (props) => {
 
@@ -10,13 +11,12 @@ export const Dialogs = (props) => {
 
     const onChangeHandler = (e) => {
         //props.setNewMessage(e.currentTarget.value);
-        let action = {type: 'SET-NEW-MESSAGE', text: e.currentTarget.value};
-        props.dispatch(action)
+        props.dispatch(setNewMessageActionCreator(e.currentTarget.value));
     }
 
     const onClickHandler = () => {
         //props.addNewMessage(props.dialogsPageState.newMessage);
-        props.dispatch({type: 'ADD-NEW-MESSAGE'})
+        props.dispatch(addNewMessageActionCreator());
     }
 
     return (
