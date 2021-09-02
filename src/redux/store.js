@@ -6,17 +6,8 @@ import hamster from '../img/hamster.jpg';
 import parrot from '../img/parrot.jpg';
 import turtle from '../img/turtle.jpg';
 import {v1} from "uuid";
-import cat_with_glasses from '../img/cat_with_glasses.jpg';
-
-const SET_NEW_POST = 'SET-NEW-POST';
-const ADD_NEW_POST = 'ADD-NEW-POST';
-const SET_NEW_MESSAGE = 'SET-NEW-MESSAGE';
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-
-export const setNewPostActionCreator = (text) => ({type: SET_NEW_POST, post: text});
-export const addNewPostActionCreator = () => ({type: ADD_NEW_POST});
-export const setNewMessageActionCreator = (text) => ({type: SET_NEW_MESSAGE, message: text});
-export const addNewMessageActionCreator = () => ({type: ADD_NEW_MESSAGE});
+import profileReducer from "./profileReducer";
+import dialogsReducer from "./dialogsReducer";
 
 export const store = {
     _state: {
@@ -25,7 +16,7 @@ export const store = {
                 {id: v1(), ava: cat_with_tongue, post: "Кто насрал в мой лоток?", likesCount: 14},
                 {id: v1(), ava: angry_cat, post: "Кожанный мешок опять забыл покормить }:(", likesCount: 23},
             ],
-            newPost: ''
+            newPostText: ''
         },
         dialogsPage: {
             dialogs: [
@@ -40,7 +31,7 @@ export const store = {
                 {id: v1(), message: 'Bark'},
                 {id: v1(), message: "What's up?"},
             ],
-            newMessage: ''
+            newMessageText: ''
         },
         friendsPage: {
             friends: [
@@ -63,25 +54,10 @@ export const store = {
         this._subscriber = observer;
     },
     dispatch(action) {
-        if (action.type === SET_NEW_POST) {
-            this._state.profilePage.newPost = action.post;
-            this._subscriber();
-        } else if (action.type === ADD_NEW_POST) {
-            this._state.profilePage.posts.unshift({
-                id: v1(),
-                ava: cat_with_glasses,
-                post: this._state.profilePage.newPost,
-                likesCount: 0
-            });
-            this._state.profilePage.newPost = '';
-            this._subscriber();
-        } else if (action.type === SET_NEW_MESSAGE) {
-            this._state.dialogsPage.newMessage = action.message;
-            this._subscriber();
-        } else if (action.type === ADD_NEW_MESSAGE) {
-            this._state.dialogsPage.messages.push({id: v1(), message: this._state.dialogsPage.newMessage});
-            this._state.dialogsPage.newMessage = '';
-            this._subscriber();
-        }
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+
+        this._subscriber();
     }
 }
