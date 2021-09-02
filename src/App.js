@@ -12,13 +12,20 @@ import logo from './img/logo.png';
 
 
 const App = (props) => {
+
+    const state = props.store.getState();
+
     return (
         <div className="app-wrapper">
             <Header logotype={logo}/>
             <Navbar friendsPage={props.store.getState().friendsPage}/>
 
-            <Route path='/profile' render={() => <Profile profilePage={props.store}/>}/>
-            <Route path='/dialogs' render={() => <Dialogs dialogsPage={props.store}/>}/>
+            <Route path='/profile' render={() => <Profile profilePageState={state.profilePage}
+                                                          setNewPost={props.store.setNewPost.bind(props.store)}
+                                                          addNewPost={props.store.addNewPost.bind(props.store)}/>}/>
+            <Route path='/dialogs' render={() => <Dialogs dialogsPageState={state.dialogsPage}
+                                                          setNewMessage={props.store.setNewMessage.bind(props.store)}
+                                                          addNewMessage={props.store.addNewMessage.bind(props.store)}/>}/>
             <Route path='/news' render={() => <News/>}/>
             <Route path='/music' render={() => <Music/>}/>
             <Route path='/settings' render={() => <Settings/>}/>

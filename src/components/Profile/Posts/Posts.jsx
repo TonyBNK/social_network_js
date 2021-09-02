@@ -4,9 +4,7 @@ import c from "./Posts.module.css";
 
 export const Posts = (props) => {
 
-    let newPostText = React.createRef();
-
-    let postsForProfile = props.posts.getState().profilePage.posts.map(p =>
+    let postsForProfile = props.postsState.posts.map(p =>
         <Post id={p.id}
               ava={p.ava}
               message={p.message}
@@ -14,11 +12,11 @@ export const Posts = (props) => {
     );
 
     const onChangeHandler = (e) => {
-        props.posts.setNewPost(e.currentTarget.value);
+        props.setNewPost(e.currentTarget.value);
     }
 
     const onClickHandler = () => {
-        props.posts.addNewPost(newPostText.current.value);
+        props.addNewPost(props.postsState.newPost);
     }
 
     return (
@@ -26,8 +24,7 @@ export const Posts = (props) => {
             <h3 className={c.title}>My Posts</h3>
             <div className={c.newPost}>
                 <div>
-                    <textarea ref={newPostText}
-                              value={props.posts.getState().profilePage.newPost.text}
+                    <textarea value={props.postsState.newPost}
                               onChange={onChangeHandler}/>
                 </div>
                 <div>

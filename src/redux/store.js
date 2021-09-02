@@ -15,9 +15,7 @@ export const store = {
                 {id: v1(), ava: cat_with_tongue, message: "Кто насрал в мой лоток?", likesCount: 14},
                 {id: v1(), ava: angry_cat, message: "Кожанный мешок опять забыл покормить }:(", likesCount: 23},
             ],
-            newPost: {
-                text: ''
-            }
+            newPost: ''
         },
         dialogsPage: {
             dialogs: [
@@ -32,9 +30,7 @@ export const store = {
                 {id: v1(), message: 'Bark'},
                 {id: v1(), message: "What's up?"},
             ],
-            newMessage: {
-                text: ''
-            }
+            newMessage: ''
         },
         friendsPage: {
             friends: [
@@ -50,26 +46,26 @@ export const store = {
         return this._state;
     },
     setNewPost(text) {
-        this._state.profilePage.newPost.text = text;
+        this._state.profilePage.newPost = text;
         this._subscriber();
     },
     addNewPost() {
         this._state.profilePage.posts.unshift({
             id: v1(),
             ava: cat_with_glasses,
-            message: this._state.profilePage.newPost.text,
+            message: this._state.profilePage.newPost,
             likesCount: 0
         });
-        this._state.profilePage.newPost.text = '';
+        this._state.profilePage.newPost = '';
         this._subscriber();
     },
     setNewMessage(text) {
-        this._state.dialogsPage.newMessage.text = text;
+        this._state.dialogsPage.newMessage = text;
         this._subscriber();
     },
     addNewMessage() {
-        this._state.dialogsPage.messages.push({id: v1(), message: this._state.dialogsPage.newMessage.text});
-        this._state.dialogsPage.newMessage.text = '';
+        this._state.dialogsPage.messages.push({id: v1(), message: this._state.dialogsPage.newMessage});
+        this._state.dialogsPage.newMessage = '';
         this._subscriber();
     },
     _subscriber() {
