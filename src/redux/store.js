@@ -42,36 +42,39 @@ export const store = {
             ]
         }
     },
-    getState() {
-        return this._state;
-    },
-    setNewPost(text) {
-        this._state.profilePage.newPost = text;
-        this._subscriber();
-    },
-    addNewPost() {
-        this._state.profilePage.posts.unshift({
-            id: v1(),
-            ava: cat_with_glasses,
-            message: this._state.profilePage.newPost,
-            likesCount: 0
-        });
-        this._state.profilePage.newPost = '';
-        this._subscriber();
-    },
-    setNewMessage(text) {
-        this._state.dialogsPage.newMessage = text;
-        this._subscriber();
-    },
-    addNewMessage() {
-        this._state.dialogsPage.messages.push({id: v1(), message: this._state.dialogsPage.newMessage});
-        this._state.dialogsPage.newMessage = '';
-        this._subscriber();
-    },
     _subscriber() {
         console.log('State is changed');
     },
+
+    getState() {
+        return this._state;
+    },
     subscribe(observer) {
         this._subscriber = observer;
-    }
+    },
+    dispatch(action) {
+      if (action.type === 'SET-NEW-POST'){
+          this._state.profilePage.newPost = action.text;
+          this._subscriber();
+      }
+      else if (action.type === 'ADD-NEW-POST'){
+          this._state.profilePage.posts.unshift({
+              id: v1(),
+              ava: cat_with_glasses,
+              message: this._state.profilePage.newPost,
+              likesCount: 0
+          });
+          this._state.profilePage.newPost = '';
+          this._subscriber();
+      }
+      else if (action.type === 'SET-NEW-MESSAGE'){
+          this._state.dialogsPage.newMessage = action.text;
+          this._subscriber();
+      }
+      else if (action.type === 'ADD-NEW-MESSAGE'){
+          this._state.dialogsPage.messages.push({id: v1(), message: this._state.dialogsPage.newMessage});
+          this._state.dialogsPage.newMessage = '';
+          this._subscriber();
+      }
+    },
 }

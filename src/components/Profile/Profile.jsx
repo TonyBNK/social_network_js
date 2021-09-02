@@ -12,8 +12,7 @@ export const Profile = (props) => {
             <ProfileInfo titleImage={azgard}
                          ava={cat_wit_glasses}/>
             <Posts postsState={props.profilePageState}
-                   setNewPost={props.setNewPost}
-                   addNewPost={props.addNewPost}/>
+                   dispatch={props.dispatch}/>
         </div>
     );
 };

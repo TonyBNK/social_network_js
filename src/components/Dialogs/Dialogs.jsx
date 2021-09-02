@@ -9,11 +9,14 @@ export const Dialogs = (props) => {
     let messagesElements = props.dialogsPageState.messages.map(m => <Message message={m.message}/>);
 
     const onChangeHandler = (e) => {
-        props.setNewMessage(e.currentTarget.value);
+        //props.setNewMessage(e.currentTarget.value);
+        let action = {type: 'SET-NEW-MESSAGE', text: e.currentTarget.value};
+        props.dispatch(action)
     }
 
     const onClickHandler = () => {
-        props.addNewMessage(props.dialogsPageState.newMessage);
+        //props.addNewMessage(props.dialogsPageState.newMessage);
+        props.dispatch({type: 'ADD-NEW-MESSAGE'})
     }
 
     return (

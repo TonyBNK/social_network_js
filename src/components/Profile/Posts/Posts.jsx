@@ -12,11 +12,14 @@ export const Posts = (props) => {
     );
 
     const onChangeHandler = (e) => {
-        props.setNewPost(e.currentTarget.value);
+        //props.setNewPost(e.currentTarget.value);
+        let action = {type: 'SET-NEW-POST', text: e.currentTarget.value};
+        props.dispatch(action);
     }
 
     const onClickHandler = () => {
-        props.addNewPost(props.postsState.newPost);
+        //props.addNewPost(props.postsState.newPost);
+        props.dispatch({type: 'ADD-NEW-POST'});
     }
 
     return (
