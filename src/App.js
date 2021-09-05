@@ -18,7 +18,7 @@ const App = (props) => {
     return (
         <div className="app-wrapper">
             <Header logotype={logo}/>
-            <Navbar friendsPage={props.store.getState().friendsPage}/>
+            <Navbar friendsPageState={state.friendsPage}/>
 
             <Route path='/profile' render={() => <Profile profilePageState={state.profilePage}
                                                           dispatch={props.store.dispatch.bind(props.store)}/>}/>
