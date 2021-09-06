@@ -1,17 +1,53 @@
 import React from 'react';
 import c from "./Navbar.module.css";
-import {Friends} from "../Friends/Friends";
 import {NavLink} from "react-router-dom";
+import {FriendsContainer} from "../Friends/FriendsContainer";
 
-export const Navbar = (props) => {
+export const Navbar = (
+    {
+        store
+    }
+) => {
     return (
         <nav className={c.navbar}>
-            <div className={c.item}><NavLink to='/profile' activeClassName={c.active}>Profile</NavLink></div>
-            <div className={c.item}><NavLink to='/dialogs' activeClassName={c.active}>Messages</NavLink></div>
-            <div className={c.item}><NavLink to='/news' activeClassName={c.active}>News</NavLink></div>
-            <div className={c.item}><NavLink to='/music' activeClassName={c.active}>Music</NavLink></div>
-            <div className={c.item}><NavLink to='/settings' activeClassName={c.active}>Settings</NavLink></div>
-            <div className={c.itemFriends}><Friends friends={props.friendsPageState.friends}/></div>
+            <div className={c.item}>
+                <NavLink
+                    to='/profile'
+                    activeClassName={c.active}>
+                    Profile
+                </NavLink>
+            </div>
+            <div className={c.item}>
+                <NavLink
+                    to='/dialogs'
+                    activeClassName={c.active}>
+                    Messages
+                </NavLink>
+            </div>
+            <div className={c.item}>
+                <NavLink
+                    to='/news'
+                    activeClassName={c.active}>
+                    News
+                </NavLink>
+            </div>
+            <div className={c.item}>
+                <NavLink
+                    to='/music'
+                    activeClassName={c.active}>
+                    Music
+                </NavLink>
+            </div>
+            <div className={c.item}>
+                <NavLink
+                    to='/settings'
+                    activeClassName={c.active}>
+                    Settings
+                </NavLink>
+            </div>
+            <div className={c.itemFriends}>
+                <FriendsContainer store={store}/>
+            </div>
         </nav>
     );
 };

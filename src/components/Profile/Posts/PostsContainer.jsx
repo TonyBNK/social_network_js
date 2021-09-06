@@ -1,0 +1,41 @@
+import React from "react";
+import {Post} from "./Post/Post";
+import {
+    addNewPostActionCreator,
+    setNewPostActionCreator
+} from "../../../redux/profileReducer";
+import {Posts} from "./Posts";
+
+export const PostsContainer = (
+    {
+        store
+    }
+) => {
+    const state = store.getState();
+
+    const newPostText = state.newPostText;
+
+    const posts = state.profilePage.posts.map(p =>
+        <Post
+            id={p.id}
+            ava={p.ava}
+            post={p.post}
+            likesCount={p.likesCount}
+        />
+    );
+
+    const onUpdateTextHandler = (text) => {
+        store.dispatch(setNewPostActionCreator(text));
+    }
+
+    const onAddTextHandler = () => store.dispatch(addNewPostActionCreator());
+
+    return (
+        <Posts
+            posts={posts}
+            newPostText={newPostText}
+            setNewPost={onUpdateTextHandler}
+            addNewPost={onAddTextHandler}
+        />
+    );
+};

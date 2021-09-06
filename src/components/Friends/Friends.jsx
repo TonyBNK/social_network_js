@@ -1,10 +1,11 @@
 import React from "react";
 import c from './Friends.module.css';
-import {Friend} from "./Friend/Friend";
 
-export const Friends = (props) => {
-
-    let friendsElements = props.friends.map(f => <Friend id={f.id} name={f.name} ava={f.ava}/>);
+export const Friends = (
+    {
+        friends
+    }
+) => {
 
     return (
         <div className={c.friends}>
@@ -12,7 +13,7 @@ export const Friends = (props) => {
                 Friends
             </div>
             <div className={c.friendsElements}>
-                {friendsElements}
+                {friends}
             </div>
         </div>
     );

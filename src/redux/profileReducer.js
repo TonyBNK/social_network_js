@@ -17,7 +17,7 @@ const initialState = {
     newPostText: ''
 }
 
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState , action) => {
 
     switch (action.type) {
         case SET_NEW_POST:
