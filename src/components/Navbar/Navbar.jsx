@@ -3,11 +3,7 @@ import c from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import {FriendsContainer} from "../Friends/FriendsContainer";
 
-export const Navbar = (
-    {
-        store
-    }
-) => {
+export const Navbar = () => {
     return (
         <nav className={c.navbar}>
             <div className={c.item}>
@@ -46,7 +42,7 @@ export const Navbar = (
                 </NavLink>
             </div>
             <div className={c.itemFriends}>
-                <FriendsContainer store={store}/>
+                <FriendsContainer/>
             </div>
         </nav>
     );

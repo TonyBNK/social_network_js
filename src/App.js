@@ -11,22 +11,18 @@ import logo from './img/logo.png';
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
 
 
-const App = (
-    {
-        store
-    }
-) => {
+const App = () => {
     return (
         <div className="app-wrapper">
             <Header logotype={logo}/>
-            <Navbar store={store}/>
+            <Navbar/>
             <Route
                 path='/profile'
-                render={() => <Profile store={store}/>}
+                render={() => <Profile/>}
             />
             <Route
                 path='/dialogs'
-                render={() => <DialogsContainer store={store}/>}
+                render={() => <DialogsContainer/>}
             />
             <Route
                 path='/news'

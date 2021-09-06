@@ -5,11 +5,7 @@ import azgard from './../../img/azgard.jpg';
 import cat_wit_glasses from './../../img/cat_with_glasses.jpg';
 import {PostsContainer} from "./Posts/PostsContainer";
 
-export const Profile = (
-    {
-        store
-    }
-) => {
+export const Profile = () => {
 
     return (
         <div className={c.profile}>
@@ -17,7 +13,7 @@ export const Profile = (
                 titleImage={azgard}
                 ava={cat_wit_glasses}
             />
-            <PostsContainer store={store}/>
+            <PostsContainer/>
         </div>
     );
 };
