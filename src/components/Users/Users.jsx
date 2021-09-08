@@ -1,6 +1,5 @@
 import React from "react";
 import c from './Users.module.css';
-import {User} from "./User/User";
 import {v1} from "uuid";
 import vsratiy_cat from "../../img/vsratiy_cat.jpg";
 import doge from "../../img/doge.jpg";
@@ -15,7 +14,7 @@ export const Users = (
         setUsers
     }
 ) => {
-    if (users.length === 0){
+    if (users.length === 0) {
         setUsers([
             {
                 id: v1(),
@@ -60,16 +59,26 @@ export const Users = (
         ]);
     }
 
-    const usersList = users.map(u =>
-        <User
-            id={u.id}
-            name={u.name}
-            ava={u.ava}
-            followed={u.followed}
-            address={u.address}
-            text={u.text}
-            followUnfollow={followUnfollow}
-        />
+    const usersList = users.map(u => {
+            const onClickHandler = () => {
+                followUnfollow(u.id);
+            }
+
+            return <div>
+                <div className={c.user} key={u.id}>
+                    <img src={u.ava} alt="ava"/>
+                    <button onClick={onClickHandler}>
+                        {u.followed ? 'Unfollow' : 'Follow'}
+                    </button>
+                    <div className={c.body}>
+                        <span className={c.name}>{u.name}</span>
+                        <span className={c.text}>{u.text}</span>
+                        <span
+                            className={c.address}>{u.address.country}, {u.address.city}</span>
+                    </div>
+                </div>
+            </div>
+        }
     );
 
     return (
