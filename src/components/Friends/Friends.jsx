@@ -1,11 +1,19 @@
 import React from "react";
 import c from './Friends.module.css';
+import {Friend} from "./Friend/Friend";
 
 export const Friends = (
     {
         friends
     }
 ) => {
+    const friendsList = friends.map(f =>
+        <Friend
+            id={f.id}
+            name={f.name}
+            ava={f.ava}
+        />
+    );
 
     return (
         <div className={c.friends}>
@@ -13,7 +21,7 @@ export const Friends = (
                 Friends
             </div>
             <div className={c.friendsElements}>
-                {friends}
+                {friendsList}
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import c from "./Posts.module.css";
+import {Post} from "./Post/Post";
 
 export const Posts = (
     {
@@ -9,6 +10,15 @@ export const Posts = (
         addNewPost
     }
 ) => {
+    const postsList = posts.map(p =>
+        <Post
+            id={p.id}
+            ava={p.ava}
+            post={p.post}
+            likesCount={p.likesCount}
+        />
+    )
+
     const onChangeHandler = (e) => setNewPost(e.currentTarget.value);
 
     const onClickHandler = () => addNewPost();
@@ -32,7 +42,7 @@ export const Posts = (
                 </div>
             </div>
             <div>
-                {posts}
+                {postsList}
             </div>
         </div>
     );

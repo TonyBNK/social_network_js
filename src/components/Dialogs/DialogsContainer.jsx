@@ -1,51 +1,24 @@
 import React from "react";
-import {Dialog} from "./Dialog/Dialog";
-import {Message} from "./Message/Message";
 import {
     addNewMessageActionCreator,
     setNewMessageActionCreator
 } from "../../redux/dialogsReducer";
 import {Dialogs} from "./Dialogs";
-import {Consumer} from "../../StoreContext";
+import {connect} from "react-redux";
 
-export const DialogsContainer = () => {
-    return (
-        <Consumer>
-            {
-                store => {
-                    const state = store.getState();
+const mapStateToProps = (state) => ({
+    dialogs: state.dialogsPage.dialogs,
+    messages: state.dialogsPage.messages,
+    newMessageText: state.dialogsPage.newMessageText
+});
 
-                    const newMessageText = state.dialogsPage.newMessageText;
+const mapDispatchToProps = (dispatch) => ({
+    setNewMessage: (text) => {
+        dispatch(setNewMessageActionCreator(text));
+    },
+    addNewMessage: () => {
+        dispatch(addNewMessageActionCreator());
+    }
+});
 
-                    const dialogs = state.dialogsPage.dialogs.map(d =>
-                        <Dialog
-                            id={d.id}
-                            name={d.name}
-                            ava={d.ava}
-                        />
-                    );
-                    const messages = state.dialogsPage.messages.map(m =>
-                        <Message
-                            id={m.id}
-                            message={m.message}
-                        />
-                    );
-
-                    const onUpdateTextHandler = (text) => {
-                        store.dispatch(setNewMessageActionCreator(text));
-                    }
-
-                    const onAddTextHandler = () => store.dispatch(addNewMessageActionCreator());
-
-                    return <Dialogs
-                        dialogs={dialogs}
-                        messages={messages}
-                        newMessageText={newMessageText}
-                        setNewMessage={onUpdateTextHandler}
-                        addNewMessage={onAddTextHandler}/>
-                }
-            }
-        </Consumer>
-
-    );
-};
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
