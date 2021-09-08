@@ -4,10 +4,14 @@ import doge from "../img/doge.jpg";
 import parrot from "../img/parrot.jpg";
 import hamster from "../img/hamster.jpg";
 import turtle from "../img/turtle.jpg";
+
 const SET_NEW_MESSAGE = 'SET-NEW-MESSAGE';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
 
-export const setNewMessageActionCreator = (text) => ({type: SET_NEW_MESSAGE, message: text});
+export const setNewMessageActionCreator = (text) => ({
+    type: SET_NEW_MESSAGE,
+    message: text
+});
 export const addNewMessageActionCreator = () => ({type: ADD_NEW_MESSAGE});
 
 const initialState = {
@@ -30,12 +34,20 @@ const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SET_NEW_MESSAGE:
-            state.newMessageText = action.message;
-            return state;
+            return {
+                ...state,
+                newMessageText: action.message
+            };
         case ADD_NEW_MESSAGE:
-            state.messages.push({id: v1(), message: state.newMessageText});
-            state.newMessageText = '';
-            return state;
+            return {
+                ...state,
+                messages: [
+                    ...state.messages, {
+                    id: v1(),
+                    message: state.newMessageText
+                }],
+                newMessageText: ''
+            };
         default:
             return state;
     }
