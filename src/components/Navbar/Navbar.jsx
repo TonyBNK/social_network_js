@@ -36,6 +36,13 @@ export const Navbar = () => {
             </div>
             <div className={c.item}>
                 <NavLink
+                    to={'/users'}
+                    activeClassName={c.active}>
+                    Find Users
+                </NavLink>
+            </div>
+            <div className={c.item}>
+                <NavLink
                     to='/settings'
                     activeClassName={c.active}>
                     Settings

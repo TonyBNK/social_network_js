@@ -1,0 +1,29 @@
+.users{
+    padding-left: 30px;
+    display: grid;
+    grid-template-rows: 1fr 8fr 1fr 50px;
+    grid-template-areas: 'title' 'user' 'show';
+}
+
+.users h3{
+    grid-area: title;
+    font-size: 24px;
+}
+
+.users span{
+    grid-area: user;
+}
+
+.users .show{
+    margin-top: 10px;
+    grid-area: show;
+    width: 200px;
+    height: 80px;
+    justify-self: center;
+    top: 0;
+    background: midnightblue;
+    color: white;
+    border-radius: 30px;
+    font-size: 24px;
+    font-weight: bold;
+}
