@@ -15,7 +15,7 @@ export class Users extends React.Component {
     }
 
     render() {
-        this.usersList = this.props.users.map(u => {
+        const usersList = this.props.users.map(u => {
                 const onClickHandler = () => {
                     this.props.followUnfollow(u.id);
                 }
@@ -44,7 +44,7 @@ export class Users extends React.Component {
         return (
             <div className={c.users}>
                 <h3>Users</h3>
-                <span>{this.usersList}</span>
+                <span>{usersList}</span>
                 <button className={c.show}>
                     Show more
                 </button>
