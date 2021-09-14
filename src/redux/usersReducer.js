@@ -2,13 +2,15 @@ const FOLLOW_UNFOLLOW = 'FOLLOW-UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const CHANGE_CURRENT_PAGE = 'CHANGE-CURRENT-PAGE';
 const SET_USERS_TOTAL_COUNT = 'SET-USERS-TOTAL-COUNT';
+const SET_FETCHING = 'SET-FETCHING';
 
 
 const initialState = {
     users: [],
     currentPage: 2,
     pageSize: 5,
-    usersTotalCount: 0
+    usersTotalCount: 0,
+    isFetching: false
 };
 
 
@@ -17,6 +19,7 @@ export const setUsersAC = (users) => ({type: SET_USERS, users});
 export const changeCurrentPageAC = (currentPage) =>
     ({type: CHANGE_CURRENT_PAGE, currentPage});
 export const setUsersTotalCountAC = (usersTotalCount) => ({type: SET_USERS_TOTAL_COUNT, usersTotalCount});
+export const setFetchingAC = (fetching) => ({type: SET_FETCHING, fetching});
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -41,6 +44,11 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 usersTotalCount: action.usersTotalCount
+            };
+        case SET_FETCHING:
+            return {
+                ...state,
+                isFetching: action.fetching
             }
         default:
             return state;
