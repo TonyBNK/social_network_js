@@ -14,12 +14,12 @@ const initialState = {
 };
 
 
-export const followUnfollowAC = (id) => ({type: FOLLOW_UNFOLLOW, userId: id});
-export const setUsersAC = (users) => ({type: SET_USERS, users});
-export const changeCurrentPageAC = (currentPage) =>
+export const followUnfollow = (id) => ({type: FOLLOW_UNFOLLOW, userId: id});
+export const setUsers = (users) => ({type: SET_USERS, users});
+export const changeCurrentPage = (currentPage) =>
     ({type: CHANGE_CURRENT_PAGE, currentPage});
-export const setUsersTotalCountAC = (usersTotalCount) => ({type: SET_USERS_TOTAL_COUNT, usersTotalCount});
-export const setFetchingAC = (fetching) => ({type: SET_FETCHING, fetching});
+export const setUsersTotalCount = (usersTotalCount) => ({type: SET_USERS_TOTAL_COUNT, usersTotalCount});
+export const setFetching = (fetching) => ({type: SET_FETCHING, fetching});
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
