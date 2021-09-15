@@ -5,12 +5,14 @@ import angry_cat from "../img/angry_cat.webp";
 
 const SET_NEW_POST = 'SET-NEW-POST';
 const ADD_NEW_POST = 'ADD-NEW-POST';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 export const setNewPostActionCreator = (text) => ({
     type: SET_NEW_POST,
     postText: text
 });
 export const addNewPostActionCreator = () => ({type: ADD_NEW_POST});
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
 
 const initialState = {
     posts: [
@@ -27,7 +29,8 @@ const initialState = {
             likesCount: 23
         },
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: null
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -47,6 +50,11 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: ''
             };
         }
+        case SET_USER_PROFILE:
+            return {
+                ...state,
+                profile: action.profile
+            }
         default:
             return state;
     }

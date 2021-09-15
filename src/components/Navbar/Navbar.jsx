@@ -43,7 +43,7 @@ export const Navbar = () => {
             </div>
             <div className={c.item}>
                 <NavLink
-                    to='/settings'
+                    to={'/settings'}
                     activeClassName={c.active}>
                     Settings
                 </NavLink>

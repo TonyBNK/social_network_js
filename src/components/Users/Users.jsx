@@ -1,6 +1,7 @@
 import React from "react";
 import c from './Users.module.css';
 import catUser from '../../img/catUser.png';
+import {NavLink} from "react-router-dom";
 
 
 export const Users = (
@@ -20,10 +21,12 @@ export const Users = (
 
             return <div>
                 <div className={c.user} key={u.id}>
-                    <img
-                        src={u.photos.small ? u.photos.small : catUser}
-                        alt="ava"
-                    />
+                    <NavLink to={'/profile/' + u.id}>
+                        <img
+                            src={u.photos.small ? u.photos.small : catUser}
+                            alt="ava"
+                        />
+                    </NavLink>
                     <button onClick={onClickHandler}>
                         {u.followed ? 'Unfollow' : 'Follow'}
                     </button>
