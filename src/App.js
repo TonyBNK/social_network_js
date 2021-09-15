@@ -18,7 +18,7 @@ const App = () => {
             <Header logotype={logo}/>
             <Navbar/>
             <Route
-                path='/profile'
+                path='/profile/:userId?'
                 render={() => <ProfileContainer/>}
             />
             <Route
