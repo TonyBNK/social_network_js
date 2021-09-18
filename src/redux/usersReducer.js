@@ -4,6 +4,7 @@ const SET_USERS = 'SET-USERS';
 const CHANGE_CURRENT_PAGE = 'CHANGE-CURRENT-PAGE';
 const SET_USERS_TOTAL_COUNT = 'SET-USERS-TOTAL-COUNT';
 const SET_FETCHING = 'SET-FETCHING';
+const SET_FOLLOWING_PROGRESS = 'SET_FOLLOWING_PROGRESS';
 
 
 const initialState = {
@@ -11,9 +12,9 @@ const initialState = {
     currentPage: 1,
     pageSize: 10,
     usersTotalCount: 0,
-    isFetching: false
+    isFetching: false,
+    followingInProgress: []
 };
-
 
 export const follow = (id) => ({type: FOLLOW, userId: id});
 export const unfollow = (id) => ({type: UNFOLLOW, userId: id});
@@ -24,7 +25,12 @@ export const setUsersTotalCount = (usersTotalCount) => ({
     type: SET_USERS_TOTAL_COUNT,
     usersTotalCount
 });
-export const setFetching = (fetching) => ({type: SET_FETCHING, fetching});
+export const setFetching = (isFetching) => ({type: SET_FETCHING, isFetching});
+export const setFollowingProgress = (isFetching, buttonId) => ({
+    type: SET_FOLLOWING_PROGRESS,
+    isFetching,
+    buttonId
+})
 
 const usersReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -60,7 +66,14 @@ const usersReducer = (state = initialState, action) => {
         case SET_FETCHING:
             return {
                 ...state,
-                isFetching: action.fetching
+                isFetching: action.isFetching
+            };
+        case SET_FOLLOWING_PROGRESS:
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.buttonId]
+                    : state.followingInProgress.filter(id => id !== action.buttonId)
             }
         default:
             return state;

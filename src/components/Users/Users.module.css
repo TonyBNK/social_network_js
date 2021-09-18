@@ -11,6 +11,10 @@
     font-size: 16px;
 }
 
+.user button:disabled{
+    opacity: 0.5;
+}
+
 .pageSelected{
     font-weight: bold;
 }

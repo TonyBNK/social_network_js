@@ -13,7 +13,9 @@ export const Users = (
         usersTotalCount,
         follow,
         unfollow,
-        changeCurrentPage
+        changeCurrentPage,
+        followingInProgress,
+        setFollowingProgress
     }
 ) => {
     const usersList = users.map(u => {
@@ -27,22 +29,30 @@ export const Users = (
                     </NavLink>
                     {
                         u.followed
-                            ? <button onClick={() => {
-                                usersAPI.unfollowUser(u.id).then(data => {
-                                    if (data.resultCode === 0) {
-                                        unfollow(u.id);
-                                    }
-                                })
-                            }
-                            }>Unfollow</button>
-                            : <button onClick={() => {
-                                usersAPI.followUser(u.id).then(data => {
-                                    if (data.resultCode === 0) {
-                                        follow(u.id);
-                                    }
-                                })
-                            }
-                            }>Follow</button>
+                            ? <button
+                                disabled={followingInProgress.some(id => id === u.id)}
+                                onClick={() => {
+                                    setFollowingProgress(true, u.id);
+                                    usersAPI.unfollowUser(u.id).then(data => {
+                                        if (data.resultCode === 0) {
+                                            unfollow(u.id);
+                                        }
+                                        setFollowingProgress(false, u.id);
+                                    })
+                                }
+                                }>Unfollow</button>
+                            : <button
+                                disabled={followingInProgress.some(id => id === u.id)}
+                                onClick={() => {
+                                    setFollowingProgress(true, u.id);
+                                    usersAPI.followUser(u.id).then(data => {
+                                        if (data.resultCode === 0) {
+                                            follow(u.id);
+                                        }
+                                        setFollowingProgress(false, u.id);
+                                    })
+                                }
+                                }>Follow</button>
                     }
                     <div className={c.body}>
                         <div className={c.name}>
