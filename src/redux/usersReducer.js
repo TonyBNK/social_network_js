@@ -8,8 +8,8 @@ const SET_FETCHING = 'SET-FETCHING';
 
 const initialState = {
     users: [],
-    currentPage: 2,
-    pageSize: 5,
+    currentPage: 1,
+    pageSize: 10,
     usersTotalCount: 0,
     isFetching: false
 };
