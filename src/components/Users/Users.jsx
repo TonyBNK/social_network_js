@@ -2,6 +2,7 @@ import React from "react";
 import c from './Users.module.css';
 import catUser from '../../img/catUser.png';
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 
 export const Users = (
@@ -10,15 +11,12 @@ export const Users = (
         currentPage,
         pageSize,
         usersTotalCount,
-        followUnfollow,
+        follow,
+        unfollow,
         changeCurrentPage
     }
 ) => {
     const usersList = users.map(u => {
-            const onClickHandler = () => {
-                followUnfollow(u.id);
-            }
-
             return <div>
                 <div className={c.user} key={u.id}>
                     <NavLink to={'/profile/' + u.id}>
@@ -27,9 +25,39 @@ export const Users = (
                             alt="ava"
                         />
                     </NavLink>
-                    <button onClick={onClickHandler}>
-                        {u.followed ? 'Unfollow' : 'Follow'}
-                    </button>
+                    {
+                        u.followed
+                            ? <button onClick={() => {
+                                axios
+                                    .delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {
+                                        withCredentials: true,
+                                        headers: {
+                                            'API-KEY': 'c71ad832-d3a7-49e4-81f5-4b21198b07fd'
+                                        }
+                                    })
+                                    .then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            unfollow(u.id);
+                                        }
+                                    })
+                            }
+                            }>Unfollow</button>
+                            : <button onClick={() => {
+                                axios
+                                    .post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`, {}, {
+                                        withCredentials: true,
+                                        headers: {
+                                            'API-KEY': 'c71ad832-d3a7-49e4-81f5-4b21198b07fd'
+                                        }
+                                    })
+                                    .then(response => {
+                                        if (response.data.resultCode === 0) {
+                                            follow(u.id);
+                                        }
+                                    })
+                            }
+                            }>Follow</button>
+                    }
                     <div className={c.body}>
                         <div className={c.name}>
                             {u.name}
