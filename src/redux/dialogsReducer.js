@@ -8,11 +8,11 @@ import turtle from "../img/turtle.jpg";
 const SET_NEW_MESSAGE = 'SET-NEW-MESSAGE';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
 
-export const setNewMessageActionCreator = (text) => ({
+export const setNewMessage = (text) => ({
     type: SET_NEW_MESSAGE,
     message: text
 });
-export const addNewMessageActionCreator = () => ({type: ADD_NEW_MESSAGE});
+export const addNewMessage = () => ({type: ADD_NEW_MESSAGE});
 
 const initialState = {
     dialogs: [

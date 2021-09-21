@@ -2,6 +2,7 @@ import React from "react";
 import c from './Dialogs.module.css';
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
+import {Redirect} from "react-router-dom";
 
 export const Dialogs = (
     {
@@ -9,7 +10,8 @@ export const Dialogs = (
         messages,
         newMessageText,
         setNewMessage,
-        addNewMessage
+        addNewMessage,
+        isAuth
     }
 ) => {
     const dialogsList = dialogs.map(d =>
@@ -29,6 +31,8 @@ export const Dialogs = (
     const onChangeHandler = (e) => setNewMessage(e.currentTarget.value);
 
     const onClickHandler = () => addNewMessage(newMessageText);
+
+    if (!isAuth) return <Redirect to={'/login'}/>
 
     return (
         <div className={c.dialogs}>
