@@ -2,17 +2,24 @@ import {v1} from "uuid";
 import cat_with_glasses from "../img/cat_with_glasses.jpg";
 import cat_with_tongue from "../img/cat_with_tongue.jpg";
 import angry_cat from "../img/angry_cat.webp";
+import {profileAPI} from "../api/api";
 
 const SET_NEW_POST = 'SET-NEW-POST';
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
-export const setNewPostActionCreator = (text) => ({
+export const setNewPost = (text) => ({
     type: SET_NEW_POST,
     postText: text
 });
-export const addNewPostActionCreator = () => ({type: ADD_NEW_POST});
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile});
+export const addNewPost = () => ({type: ADD_NEW_POST});
+export const setUserProfileSuccess = (profile) => ({type: SET_USER_PROFILE, profile});
+
+export const setUserProfile = (userProfileId) => {
+    return (dispatch) => {
+        profileAPI.getUsersProfile(userProfileId).then(data => dispatch(setUserProfileSuccess(data)));
+    }
+}
 
 const initialState = {
     posts: [

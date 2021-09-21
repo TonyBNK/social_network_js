@@ -2,7 +2,6 @@ import React from "react";
 import c from './Users.module.css';
 import catUser from '../../img/catUser.png';
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 
 export const Users = (
@@ -14,8 +13,7 @@ export const Users = (
         follow,
         unfollow,
         changeCurrentPage,
-        followingInProgress,
-        setFollowingProgress
+        followingInProgress
     }
 ) => {
     const usersList = users.map(u => {
@@ -31,28 +29,14 @@ export const Users = (
                         u.followed
                             ? <button
                                 disabled={followingInProgress.some(id => id === u.id)}
-                                onClick={() => {
-                                    setFollowingProgress(true, u.id);
-                                    usersAPI.unfollowUser(u.id).then(data => {
-                                        if (data.resultCode === 0) {
-                                            unfollow(u.id);
-                                        }
-                                        setFollowingProgress(false, u.id);
-                                    })
-                                }
-                                }>Unfollow</button>
+                                onClick={() => unfollow(u.id)}>
+                                Unfollow
+                            </button>
                             : <button
                                 disabled={followingInProgress.some(id => id === u.id)}
-                                onClick={() => {
-                                    setFollowingProgress(true, u.id);
-                                    usersAPI.followUser(u.id).then(data => {
-                                        if (data.resultCode === 0) {
-                                            follow(u.id);
-                                        }
-                                        setFollowingProgress(false, u.id);
-                                    })
-                                }
-                                }>Follow</button>
+                                onClick={() => follow(u.id)}>
+                                Follow
+                            </button>
                     }
                     <div className={c.body}>
                         <div className={c.name}>
