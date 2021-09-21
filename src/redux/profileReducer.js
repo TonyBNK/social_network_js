@@ -37,7 +37,8 @@ const initialState = {
         },
     ],
     newPostText: '',
-    profile: null
+    profile: null,
+    isAuth: false
 }
 
 const profileReducer = (state = initialState, action) => {
