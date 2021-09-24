@@ -2,9 +2,8 @@ import React from "react";
 import c from './Dialogs.module.css';
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
-const Dialogs = (
+export const Dialogs = (
     {
         dialogs,
         messages,
@@ -52,5 +51,3 @@ const Dialogs = (
         </div>
     );
 };
-
-export default withAuthRedirect(Dialogs);
