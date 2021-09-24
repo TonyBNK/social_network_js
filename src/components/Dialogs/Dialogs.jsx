@@ -2,16 +2,15 @@ import React from "react";
 import c from './Dialogs.module.css';
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
-import {Redirect} from "react-router-dom";
+import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 
-export const Dialogs = (
+const Dialogs = (
     {
         dialogs,
         messages,
         newMessageText,
         setNewMessage,
-        addNewMessage,
-        isAuth
+        addNewMessage
     }
 ) => {
     const dialogsList = dialogs.map(d =>
@@ -31,8 +30,6 @@ export const Dialogs = (
     const onChangeHandler = (e) => setNewMessage(e.currentTarget.value);
 
     const onClickHandler = () => addNewMessage(newMessageText);
-
-    if (!isAuth) return <Redirect to={'/login'}/>
 
     return (
         <div className={c.dialogs}>
@@ -55,3 +52,5 @@ export const Dialogs = (
         </div>
     );
 };
+
+export default withAuthRedirect(Dialogs);
