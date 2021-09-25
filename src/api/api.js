@@ -27,11 +27,20 @@ export const usersAPI = {
 }
 
 export const profileAPI = {
-    getUsersProfile: (userId = 2) => {
+    getUsersProfile: (userId) => {
         return axiosInst
             .get(`profile/${userId}`)
             .then(response => response.data);
-    }
+    },
+    getUsersStatus: (userId) => {
+        return axiosInst
+            .get(`profile/status/${userId}`)
+            .then(response => response.data);
+    },
+    updateStatus: (newStatus) => {
+        return axiosInst
+            .put(`profile/status`, {status: newStatus});
+    },
 }
 
 export const authAPI = {

@@ -6,7 +6,8 @@ import ProfileStatus from "./ProfileStatus/ProfileStatus";
 export const ProfileInfo = (
     {
         profile,
-        titleImage
+        status,
+        updateProfileStatus
     }
 ) => {
     if (!profile) {
@@ -15,13 +16,13 @@ export const ProfileInfo = (
 
     return (
         <div className={c.info}>
-            {/*<div className={c.titleImage}>*/}
-            {/*    <img src={titleImage} alt="азгард"/>*/}
-            {/*</div>*/}
             <div className={c.avatar}>
                 <img src={profile.photos.large} alt="ava"/>
             </div>
-            <ProfileStatus/>
+            <ProfileStatus
+                status={status}
+                updateProfileStatus={updateProfileStatus}
+            />
             <div className={c.description}>
                 <span className={c.fullName}>
                     {profile.fullName}

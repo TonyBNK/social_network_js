@@ -2,14 +2,32 @@ import React from "react";
 import c from './ProfileStatus.module.css';
 
 class ProfileStatus extends React.Component {
-    state = {
-        isEdit: false
+    componentDidMount() {
+        debugger;
     }
 
-    setEditMode = () => {
+    state = {
+        isEdit: false,
+        status: this.props.status
+    }
+
+    activateEditMode = () => {
         this.setState({
-            isEdit: !this.state.isEdit
+            isEdit: true
         });
+    }
+
+    deactivateEditMode = () => {
+        this.setState({
+            isEdit: false
+        });
+        this.props.updateProfileStatus(this.state.status);
+    }
+
+    updateStatusLocally = (e) => {
+        this.setState(({
+            status: e.currentTarget.value
+        }));
     }
 
     render() {
@@ -19,13 +37,14 @@ class ProfileStatus extends React.Component {
                     this.state.isEdit
                         ? <div>
                             <input
-                                value={'Hello there'}
-                                onBlur={this.setEditMode}
-                                autoFocus/>
+                                value={this.state.status}
+                                onBlur={this.deactivateEditMode}
+                                autoFocus
+                                onChange={this.updateStatusLocally}/>
                         </div>
                         : <div>
-                            <span onDoubleClick={this.setEditMode}>
-                            {'Hello there'}
+                            <span onDoubleClick={this.activateEditMode}>
+                            {this.props.status}
                     </span>
                         </div>
                 }

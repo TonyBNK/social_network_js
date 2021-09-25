@@ -17,7 +17,7 @@ export const Navbar = () => {
                 <NavLink
                     to='/dialogs'
                     activeClassName={c.active}>
-                    Messages
+                    Dialogs
                 </NavLink>
             </div>
             <div className={c.item}>
