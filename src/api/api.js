@@ -48,5 +48,22 @@ export const authAPI = {
         return axiosInst
             .get(`auth/me`,)
             .then(response => response.data);
+    },
+    logUserIn: (email, password, rememberMe) => {
+        const loginIsOk = email === 'borisenk-anton@yandex.ru'
+            && password === 'Qwerty123';
+
+        if (loginIsOk) {
+            return axiosInst
+                .post(`/auth/login`, {
+                    email: email,
+                    password: password,
+                    rememberMe: rememberMe
+                });
+        }
+    },
+    logUserOut: () => {
+        return axiosInst
+            .delete(`/auth/login`);
     }
 }
