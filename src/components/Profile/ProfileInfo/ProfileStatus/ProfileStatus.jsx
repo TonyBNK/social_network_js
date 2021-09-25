@@ -2,10 +2,6 @@ import React from "react";
 import c from './ProfileStatus.module.css';
 
 class ProfileStatus extends React.Component {
-    componentDidMount() {
-        debugger;
-    }
-
     state = {
         isEdit: false,
         status: this.props.status
@@ -28,6 +24,14 @@ class ProfileStatus extends React.Component {
         this.setState(({
             status: e.currentTarget.value
         }));
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
     render() {
