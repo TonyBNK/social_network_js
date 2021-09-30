@@ -4,22 +4,18 @@ import cat_with_tongue from "../img/cat_with_tongue.jpg";
 import angry_cat from "../img/angry_cat.webp";
 import {profileAPI} from "../api/api";
 
-const SET_NEW_POST = 'SET-NEW-POST';
+
 const ADD_NEW_POST = 'ADD-NEW-POST';
 const GET_USER_PROFILE = 'GET-USER-PROFILE';
 const SET_STATUS = 'SET-STATUS';
 
 
-export const setNewPost = (text) => ({
-    type: SET_NEW_POST,
-    postText: text
-});
-export const addNewPost = () => ({type: ADD_NEW_POST});
-const getUserProfileSuccess = (profile) => ({
+export const addNewPost = (newPostText) => ({type: ADD_NEW_POST, newPostText});
+const getUser = (profile) => ({
     type: GET_USER_PROFILE,
     profile
 });
-const setStatusSuccess = (status) => ({
+const setStatus = (status) => ({
     type: SET_STATUS,
     status
 });
@@ -29,7 +25,7 @@ export const getUserProfile = (userId = 19542) => {
         profileAPI
             .getUsersProfile(userId)
             .then(profile => {
-                dispatch(getUserProfileSuccess(profile))
+                dispatch(getUser(profile))
             });
     }
 }
@@ -38,7 +34,7 @@ export const getUserStatus = (userId = 19542) => {
         profileAPI
             .getUsersStatus(userId)
             .then(status => {
-                dispatch(setStatusSuccess(status))
+                dispatch(setStatus(status))
             });
     }
 }
@@ -48,7 +44,7 @@ export const updateProfileStatus = (newStatus) => {
             .updateStatus(newStatus)
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    dispatch(setStatusSuccess(newStatus))
+                    dispatch(setStatus(newStatus))
                 }
             })
     }
@@ -69,7 +65,6 @@ const initialState = {
             likesCount: 23
         },
     ],
-    newPostText: '',
     profile: null,
     status: '',
 }
@@ -77,11 +72,6 @@ const initialState = {
 const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case SET_NEW_POST:
-            return {
-                ...state,
-                newPostText: action.postText
-            };
         case ADD_NEW_POST: {
             return {
                 ...state,
@@ -89,12 +79,11 @@ const profileReducer = (state = initialState, action) => {
                     {
                         id: v1(),
                         ava: cat_with_glasses,
-                        post: state.newPostText,
+                        post: action.newPostText,
                         likesCount: 0
                     },
                     ...state.posts
-                ],
-                newPostText: ''
+                ]
             };
         }
         case GET_USER_PROFILE:

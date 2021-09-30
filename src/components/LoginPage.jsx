@@ -1,6 +1,7 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
 
+
 export const LoginPage = (
     {
         logIn
@@ -8,7 +9,6 @@ export const LoginPage = (
 ) => {
     const submit = (formData) => {
         logIn(formData)
-
     }
 
     return (

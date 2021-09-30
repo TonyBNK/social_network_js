@@ -1,12 +1,11 @@
 import React from "react";
 import c from "./Posts.module.css";
 import {Post} from "./Post/Post";
+import {Field, reduxForm} from "redux-form";
 
 export const Posts = (
     {
         posts,
-        newPostText,
-        setNewPost,
         addNewPost
     }
 ) => {
@@ -19,31 +18,45 @@ export const Posts = (
         />
     )
 
-    const onChangeHandler = (e) => setNewPost(e.currentTarget.value);
-
-    const onClickHandler = () => addNewPost();
+    const submitAddNewPost = (values) => addNewPost(values.newPostText);
 
     return (
         <div className={c.allPosts}>
             <h3 className={c.title}>
                 My Posts
             </h3>
-            <div className={c.newPost}>
-                <div>
-                    <textarea
-                        value={newPostText}
-                        onChange={onChangeHandler}
-                    />
-                </div>
-                <div>
-                    <button onClick={onClickHandler}>
-                        Send
-                    </button>
-                </div>
-            </div>
+            <NewPostReduxForm onSubmit={submitAddNewPost}/>
             <div>
                 {postsList}
             </div>
         </div>
     );
 };
+
+const NewPostForm = (
+    {
+        handleSubmit
+    }
+) => {
+    return (
+        <form onSubmit={handleSubmit}>
+            <div>
+                <Field
+                    component={'textarea'}
+                    type={'text'}
+                    placeholder={'Add new post...'}
+                    name={'newPostText'}
+                />
+            </div>
+            <div>
+                <button>
+                    Send
+                </button>
+            </div>
+        </form>
+    )
+}
+
+const NewPostReduxForm = reduxForm({
+    form: 'newPost'
+})(NewPostForm);
