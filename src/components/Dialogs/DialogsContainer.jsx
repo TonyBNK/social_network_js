@@ -1,4 +1,4 @@
-import {addNewMessage} from "../../redux/dialogsReducer";
+import {addNewMessage} from "../../bll/reducers/dialogsReducer";
 import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";

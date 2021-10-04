@@ -1,7 +1,7 @@
 import React from 'react';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {store} from "./redux/redux-store";
+import {store} from "./bll/redux-store";
 import * as ReactDOM from "react-dom";
 import {BrowserRouter} from "react-router-dom";
 import App from "./App";

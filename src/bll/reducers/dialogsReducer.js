@@ -1,9 +1,9 @@
 import {v1} from "uuid";
-import vsratiy_cat from "../img/vsratiy_cat.jpg";
-import doge from "../img/doge.jpg";
-import parrot from "../img/parrot.jpg";
-import hamster from "../img/hamster.jpg";
-import turtle from "../img/turtle.jpg";
+import vsratiy_cat from "../../img/vsratiy_cat.jpg";
+import doge from "../../img/doge.jpg";
+import parrot from "../../img/parrot.jpg";
+import hamster from "../../img/hamster.jpg";
+import turtle from "../../img/turtle.jpg";
 
 
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';

@@ -1,9 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import {logIn} from "../redux/authReducer";
 import {LoginPage} from "./LoginPage";
 import {compose} from "redux";
 import {withProfileRedirect} from "../hoc/withProfileRedirect";
+import {logIn} from "../bll/thunks/thunks";
 
 class LoginPageContainer extends React.Component {
 

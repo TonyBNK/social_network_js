@@ -49,7 +49,7 @@ export const authAPI = {
             .get(`auth/me`,)
             .then(response => response.data);
     },
-    logUserIn: (email, password, rememberMe) => {
+    logUserIn: (email, password, rememberMe = false) => {
         const loginIsOk = email === 'borisenk-anton@yandex.ru'
             && password === 'Qwerty123';
 

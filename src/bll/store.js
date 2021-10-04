@@ -6,8 +6,8 @@ import hamster from '../img/hamster.jpg';
 import parrot from '../img/parrot.jpg';
 import turtle from '../img/turtle.jpg';
 import {v1} from "uuid";
-import profileReducer from "./profileReducer";
-import dialogsReducer from "./dialogsReducer";
+import profileReducer from "./reducers/profileReducer";
+import dialogsReducer from "./reducers/dialogsReducer";
 
 export const store = {
     _state: {

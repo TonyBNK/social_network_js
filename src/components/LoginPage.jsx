@@ -1,20 +1,24 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
+import {Input} from "./common/forms-controls/FormsControls";
+import {maxLengthCreator, required} from "../utils/validators/validators";
 
+
+const maxLength30 = maxLengthCreator(30);
 
 export const LoginPage = (
     {
         logIn
     }
 ) => {
-    const submit = (formData) => {
+    const submitLogIn = (formData) => {
         logIn(formData)
     }
 
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={submit}/>
+            <LoginReduxForm onSubmit={submitLogIn}/>
         </div>
     )
 }
@@ -28,18 +32,20 @@ const LoginForm = (
         <form onSubmit={handleSubmit}>
             <div>
                 <Field
-                    component={'input'}
+                    component={Input}
                     type={'text'}
                     placeholder={'Login'}
                     name={'login'}
+                    validate={[required, maxLength30]}
                 />
             </div>
             <div>
                 <Field
-                    component={'input'}
-                    type={'text'}
+                    component={Input}
+                    type={'password'}
                     placeholder={'Password'}
                     name={'password'}
+                    validate={[required, maxLength30]}
                 />
             </div>
             <div>

@@ -4,7 +4,7 @@ import {
     setFollowingProgress,
     getUsers,
     changeCurrentPage, followUser, unfollowUser
-} from "../../redux/usersReducer";
+} from "../../bll/reducers/usersReducer";
 import {Users} from "./Users";
 import {Preloader} from "../Preloader/Preloader";
 

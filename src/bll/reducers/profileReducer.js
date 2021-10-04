@@ -1,8 +1,8 @@
 import {v1} from "uuid";
-import cat_with_glasses from "../img/cat_with_glasses.jpg";
-import cat_with_tongue from "../img/cat_with_tongue.jpg";
-import angry_cat from "../img/angry_cat.webp";
-import {profileAPI} from "../api/api";
+import cat_with_glasses from "../../img/cat_with_glasses.jpg";
+import cat_with_tongue from "../../img/cat_with_tongue.jpg";
+import angry_cat from "../../img/angry_cat.webp";
+import {profileAPI} from "../../api/api";
 
 
 const ADD_NEW_POST = 'ADD-NEW-POST';
