@@ -46,24 +46,26 @@ export const profileAPI = {
 export const authAPI = {
     getUsersAuth: () => {
         return axiosInst
-            .get(`auth/me`,)
+            .get(`auth/me`)
             .then(response => response.data);
     },
-    logUserIn: (email, password, rememberMe = false) => {
-        const loginIsOk = email === 'borisenk-anton@yandex.ru'
-            && password === 'Qwerty123';
+    logUserIn: (formData) => {
+        const loginIsOk = formData.login === 'borisenk-anton@yandex.ru'
+            && formData.password === 'Qwerty123';
 
         if (loginIsOk) {
             return axiosInst
                 .post(`/auth/login`, {
-                    email: email,
-                    password: password,
-                    rememberMe: rememberMe
-                });
+                    email: formData.login,
+                    password: formData.password,
+                    rememberMe: formData.rememberMe
+                })
+                .then(response => response.data);
         }
     },
     logUserOut: () => {
         return axiosInst
-            .delete(`/auth/login`);
+            .delete(`/auth/login`)
+            .then(response => response.data);
     }
 }

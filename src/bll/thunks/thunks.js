@@ -3,12 +3,13 @@ import {setAuthUserDataSuccess} from "../action-creators/actionCreators";
 
 
 export const setAuthUserData = () => {
+    debugger
     return (dispatch) => {
         authAPI
             .getUsersAuth()
-            .then(response => {
-                if (response.resultCode === 0) {
-                    const {id, login, email} = response.data;
+            .then(data => {
+                if (data.resultCode === 0) {
+                    const {id, login, email} = data.data;
                     dispatch(setAuthUserDataSuccess(id, login, email, true));
                 }
             });
@@ -16,13 +17,10 @@ export const setAuthUserData = () => {
 };
 export const logIn = (formData) => {
     return (dispatch) => {
-        const {login: email, password, rememberMe} = formData;
-
         authAPI
-            .logUserIn(email, password, rememberMe)
-            .then(response => {
-
-                if (response.resultCode === 0) {
+            .logUserIn(formData)
+            .then(data => {
+                if (data.resultCode === 0) {
                     dispatch(setAuthUserData());
                 }
             })
