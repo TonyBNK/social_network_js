@@ -44,24 +44,19 @@ export const profileAPI = {
 }
 
 export const authAPI = {
-    getUsersAuth: () => {
+    me: () => {
         return axiosInst
             .get(`auth/me`)
             .then(response => response.data);
     },
     logUserIn: (formData) => {
-        const loginIsOk = formData.login === 'borisenk-anton@yandex.ru'
-            && formData.password === 'Qwerty123';
-
-        if (loginIsOk) {
-            return axiosInst
-                .post(`/auth/login`, {
-                    email: formData.login,
-                    password: formData.password,
-                    rememberMe: formData.rememberMe
-                })
-                .then(response => response.data);
-        }
+        return axiosInst
+            .post(`/auth/login`, {
+                email: formData.login,
+                password: formData.password,
+                rememberMe: formData.rememberMe
+            })
+            .then(response => response.data);
     },
     logUserOut: () => {
         return axiosInst

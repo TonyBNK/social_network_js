@@ -2,6 +2,7 @@ import React from "react";
 import {Field, reduxForm} from "redux-form";
 import {Input} from "./common/forms-controls/FormsControls";
 import {maxLengthCreator, required} from "../utils/validators/validators";
+import c from './LoginPage.module.scss';
 
 
 const maxLength30 = maxLengthCreator(30);
@@ -25,7 +26,8 @@ export const LoginPage = (
 
 const LoginForm = (
     {
-        handleSubmit
+        handleSubmit,
+        error
     }
 ) => {
     return (
@@ -48,6 +50,11 @@ const LoginForm = (
                     validate={[required, maxLength30]}
                 />
             </div>
+            {
+                error && <div className={c.errorMessage}>
+                    {error}
+                </div>
+            }
             <div>
                 <Field
                     component={'input'}
