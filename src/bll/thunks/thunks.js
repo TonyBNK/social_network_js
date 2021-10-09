@@ -50,4 +50,4 @@ export const initializeApp = () => {
                 dispatch(initializedSuccess());
             })
     }
-}
+};

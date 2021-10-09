@@ -12,8 +12,8 @@ export const Users = (
         usersTotalCount,
         follow,
         unfollow,
-        changeCurrentPage,
-        followingInProgress
+        followingInProgress,
+        requestUsers
     }
 ) => {
     const usersList = users.map(u => {
@@ -63,7 +63,7 @@ export const Users = (
 
     const pagesList = pages.map(p => {
         const onChangeCurrentPageHandler = () => {
-            changeCurrentPage(p);
+            requestUsers(p, pageSize);
         }
 
         return (

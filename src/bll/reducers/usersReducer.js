@@ -34,23 +34,14 @@ export const setFollowingProgress = (isFetching, buttonId) => ({
     buttonId
 });
 
-export const getUsers = (currentPage, pageSize) => {
+export const requestUsers = (page = 1, pageSize) => {
     return (dispatch) => {
         dispatch(setFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(setFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setUsersTotalCount(data.totalCount));
-        });
-    }
-};
-export const changeCurrentPage = (page, pageSize) => {
-    return (dispatch) => {
         dispatch(changeCurrentPageSuccess(page));
-        dispatch(setFetching(true));
         usersAPI.getUsers(page, pageSize).then(data => {
             dispatch(setFetching(false));
             dispatch(setUsers(data.items));
+            dispatch(setUsersTotalCount(data.totalCount));
         });
     }
 };
