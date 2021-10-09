@@ -1,12 +1,14 @@
 import {authAPI} from "../../api/api";
-import {setAuthUserDataSuccess} from "../action-creators/actionCreators";
+import {
+    initializedSuccess,
+    setAuthUserDataSuccess
+} from "../action-creators/actionCreators";
 import {stopSubmit} from "redux-form";
 
 
 export const setAuthUserData = () => {
-    debugger
     return (dispatch) => {
-        authAPI
+        return authAPI
             .me()
             .then(data => {
                 if (data.resultCode === 0) {
@@ -23,8 +25,7 @@ export const logIn = (formData) => {
             .then(data => {
                 if (data.resultCode === 0) {
                     dispatch(setAuthUserData());
-                }
-                else {
+                } else {
                     const errorMessage = data.messages.length !== 0 ? data.messages[0] : 'Some error!'
                     dispatch(stopSubmit('login', {_error: errorMessage}));
                 }
@@ -39,6 +40,14 @@ export const logOut = () => {
                 if (response.resultCode === 0) {
                     dispatch(setAuthUserDataSuccess(null, null, null, false));
                 }
+            })
+    }
+};
+export const initializeApp = () => {
+    return (dispatch) => {
+        dispatch(setAuthUserData())
+            .then(() => {
+                dispatch(initializedSuccess());
             })
     }
 }
