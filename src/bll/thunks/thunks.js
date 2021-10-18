@@ -2,7 +2,7 @@ import {authAPI} from "../../api/api";
 import {
     initializedSuccess,
     setAuthUserDataSuccess
-} from "../action-creators/actionCreators";
+} from "../actions/actions";
 import {stopSubmit} from "redux-form";
 
 

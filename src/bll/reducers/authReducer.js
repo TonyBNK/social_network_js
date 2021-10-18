@@ -1,4 +1,4 @@
-import {SET_USER_DATA} from "../action-creators/actionCreators";
+import {SET_USER_DATA} from "../actions/actions";
 
 const initialState = {
     userId: null,

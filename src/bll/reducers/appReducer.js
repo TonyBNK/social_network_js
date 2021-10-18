@@ -1,4 +1,4 @@
-import {SET_INITIALIZED} from "../action-creators/actionCreators";
+import {SET_INITIALIZED} from "../actions/actions";
 
 
 const initialState = {
