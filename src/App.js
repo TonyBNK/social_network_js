@@ -63,7 +63,7 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    isInitialized: state.app.initialized
+    isInitialized: state.app.isInitialized
 })
 
 export default compose(

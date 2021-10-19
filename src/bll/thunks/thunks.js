@@ -1,4 +1,4 @@
-import {authAPI, profileAPI, usersAPI} from "../../api/api";
+import {authAPI, followAPI, profileAPI, usersAPI} from "../../api/api";
 import {
     changeCurrentPage, follow, getUser, setInitialized, setAuthenticated,
     setFetching, setFollowingProcess, setMyStatus, setUsersTotalCount,
@@ -52,12 +52,12 @@ export const requestUsers = (page = 1, pageSize) =>
     };
 export const followUser = (userId) =>
     async (dispatch) => {
-        const apiMethod = usersAPI.followUser.bind(usersAPI);
+        const apiMethod = followAPI.followUser.bind(usersAPI);
         followUnfollowFlow(dispatch, userId, apiMethod, follow);
     };
 export const unfollowUser = (userId) =>
     async (dispatch) => {
-        const apiMethod = usersAPI.unfollowUser.bind(usersAPI);
+        const apiMethod = followAPI.unfollowUser.bind(usersAPI);
         followUnfollowFlow(dispatch, userId, apiMethod, unfollow);
     };
 export const setAuthentication = () =>
@@ -67,8 +67,7 @@ export const setAuthentication = () =>
             if (data.resultCode === 0) {
                 const {id, login, email} = data.data;
                 dispatch(setAuthenticated(id, login, email, true));
-            }
-            return data;
+            } //Todo: return data maybe
         } catch (e) {
             console.log(e);
         }

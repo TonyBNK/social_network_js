@@ -2,7 +2,7 @@ import {SET_INITIALIZED} from "../actions/actions";
 
 
 const initialState = {
-    initialized: false
+    isInitialized: false
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -10,7 +10,7 @@ export const appReducer = (state = initialState, action) => {
         case SET_INITIALIZED:
             return {
                 ...state,
-                initialized: true
+                isInitialized: true
             }
         default:
             return state;

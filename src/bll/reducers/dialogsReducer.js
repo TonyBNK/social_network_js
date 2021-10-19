@@ -19,8 +19,7 @@ const initialState = {
         {id: v1(), message: 'So much wow!'},
         {id: v1(), message: 'Bark'},
         {id: v1(), message: "What's up?"},
-    ],
-    isAuth: false
+    ]
 };
 
 export const dialogsReducer = (state = initialState, action) => {

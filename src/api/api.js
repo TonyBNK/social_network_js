@@ -16,7 +16,10 @@ export const usersAPI = {
         } catch (e) {
             console.log(e);
         }
-    },
+    }
+};
+
+export const followAPI = {
     followUser: async (userId) => {
         try {
             const response = await axiosInst.post(`follow/${userId}`);
@@ -32,8 +35,8 @@ export const usersAPI = {
         } catch (e) {
             console.log(e);
         }
-    }
-}
+    },
+};
 
 export const profileAPI = {
     getUserProfile: async (userId) => {

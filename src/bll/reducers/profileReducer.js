@@ -26,6 +26,7 @@ const initialState = {
     ],
     profile: null,
     status: '',
+    userId: null
 }
 
 export const profileReducer = (state = initialState, action) => {

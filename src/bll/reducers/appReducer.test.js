@@ -6,12 +6,12 @@ let initialState;
 
 beforeEach(() => {
     initialState = {
-        initialized: false
+        isInitialized: false
     }
 });
 
 test('initialized value should be true', () => {
    let newState = appReducer(initialState, setInitialized());
 
-   expect(newState.initialized).toBeTruthy();
+   expect(newState.isInitialized).toBeTruthy();
 });
