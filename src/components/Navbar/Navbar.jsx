@@ -3,7 +3,7 @@ import c from "./Navbar.module.css";
 import {NavLink} from "react-router-dom";
 import {FriendsContainer} from "../Friends/FriendsContainer";
 
-export const Navbar = () => {
+export const Navbar = React.memo(() => {
     return (
         <nav className={c.navbar}>
             <div className={c.item}>
@@ -53,4 +53,4 @@ export const Navbar = () => {
             </div>
         </nav>
     );
-};
+});

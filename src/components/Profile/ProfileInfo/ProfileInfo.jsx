@@ -3,7 +3,7 @@ import c from './ProfileInfo.module.css';
 import {Preloader} from "../../Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus/ProfileStatusWithHooks";
 
-export const ProfileInfo = (
+export const ProfileInfo = React.memo((
     {
         profile,
         status,
@@ -30,4 +30,4 @@ export const ProfileInfo = (
             </div>
         </div>
     );
-};
+});

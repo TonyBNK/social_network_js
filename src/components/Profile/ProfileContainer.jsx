@@ -47,6 +47,7 @@ export default compose(
         updateProfileStatus
     }),
     withRouter,
-    withAuthRedirect
+    withAuthRedirect,
+    React.memo
 )(ProfileContainer);
 

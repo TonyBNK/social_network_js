@@ -2,7 +2,7 @@ import React from "react";
 import c from './Dialog.module.css';
 import {NavLink} from "react-router-dom";
 
-export const Dialog = (
+export const Dialog = React.memo((
     {
         id,
         ava,
@@ -24,4 +24,4 @@ export const Dialog = (
             </NavLink>
         </div>
     );
-};
+});

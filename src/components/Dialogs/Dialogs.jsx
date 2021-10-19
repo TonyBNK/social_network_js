@@ -46,7 +46,7 @@ export const Dialogs = (
     );
 };
 
-const NewMessageForm = (
+const NewMessageForm = React.memo((
     {
         handleSubmit
     }
@@ -67,7 +67,7 @@ const NewMessageForm = (
             </button>
         </form>
     )
-}
+});
 
 const NewMessageReduxForm = reduxForm({
     form: 'newMessage'

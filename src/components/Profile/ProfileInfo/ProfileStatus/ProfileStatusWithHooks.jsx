@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import c from './ProfileStatus.module.css';
 
 
-const ProfileStatusWithHooks = (
+const ProfileStatusWithHooks = React.memo((
     {
         status,
         updateProfileStatus
@@ -47,6 +47,6 @@ const ProfileStatusWithHooks = (
             }
         </div>
     )
-}
+});
 
 export default ProfileStatusWithHooks;

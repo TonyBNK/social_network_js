@@ -15,5 +15,6 @@ class LoginPageContainer extends React.Component {
 
 export default compose(
     withProfileRedirect,
-    connect(null, {logIn})
+    connect(null, {logIn}),
+    React.memo
 )(LoginPageContainer);

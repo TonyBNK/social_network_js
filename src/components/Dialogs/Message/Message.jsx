@@ -1,7 +1,7 @@
 import React from "react";
 import c from './Message.module.css';
 
-export const Message = (
+export const Message = React.memo((
     {
         id,
         message
@@ -12,4 +12,4 @@ export const Message = (
             {message}
         </div>
     );
-};
+});

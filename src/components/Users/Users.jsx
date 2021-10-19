@@ -4,7 +4,7 @@ import catUser from '../../img/catUser.png';
 import {NavLink} from "react-router-dom";
 
 
-export const Users = (
+export const Users = React.memo((
     {
         users,
         currentPage,
@@ -90,4 +90,4 @@ export const Users = (
             </button>
         </div>
     )
-}
+});

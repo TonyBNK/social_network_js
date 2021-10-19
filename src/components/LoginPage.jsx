@@ -24,7 +24,7 @@ export const LoginPage = (
     )
 }
 
-const LoginForm = (
+const LoginForm = React.memo((
     {
         handleSubmit,
         error
@@ -67,6 +67,6 @@ const LoginForm = (
             </div>
         </form>
     )
-}
+});
 
 const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);
