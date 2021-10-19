@@ -9,58 +9,85 @@ const axiosInst = axios.create({
 });
 
 export const usersAPI = {
-    getUsers: (currentPage = 1, pageSize = 10) => {
-        return axiosInst
-            .get(`users?page=${currentPage}&count=${pageSize}`)
-            .then(response => response.data);
+    getUsers: async (currentPage = 1, pageSize = 10) => {
+        try {
+            const response = await axiosInst.get(`users?page=${currentPage}&count=${pageSize}`);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
     },
-    followUser: (userId) => {
-        return axiosInst
-            .post(`follow/${userId}`)
-            .then(response => response.data);
+    followUser: async (userId) => {
+        try {
+            const response = await axiosInst.post(`follow/${userId}`);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
     },
-    unfollowUser: (userId) => {
-        return axiosInst
-            .delete(`follow/${userId}`)
-            .then(response => response.data);
+    unfollowUser: async (userId) => {
+        try {
+            const response = await axiosInst.delete(`follow/${userId}`);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
     }
 }
 
 export const profileAPI = {
-    getUsersProfile: (userId) => {
-        return axiosInst
-            .get(`profile/${userId}`)
-            .then(response => response.data);
+    getUserProfile: async (userId) => {
+        try {
+            const response = await axiosInst.get(`profile/${userId}`);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
     },
-    getUsersStatus: (userId) => {
-        return axiosInst
-            .get(`profile/status/${userId}`)
-            .then(response => response.data);
+    getUserStatus: async (userId) => {
+        try {
+            const response = await axiosInst.get(`profile/status/${userId}`)
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
     },
-    updateStatus: (newStatus) => {
-        return axiosInst
-            .put(`profile/status`, {status: newStatus});
+    updateMyStatus: async (newStatus) => {
+        try {
+            return await axiosInst.put(`profile/status`, {status: newStatus});
+        } catch (e) {
+            console.log(e);
+        }
     },
 }
 
 export const authAPI = {
-    me: () => {
-        return axiosInst
-            .get(`auth/me`)
-            .then(response => response.data);
+    me: async () => {
+        try {
+            const response = await axiosInst.get(`auth/me`);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
     },
-    logUserIn: (formData) => {
-        return axiosInst
-            .post(`/auth/login`, {
+    logIn: async (formData) => {
+        try {
+            const response = await axiosInst.post(`/auth/login`, {
                 email: formData.login,
                 password: formData.password,
                 rememberMe: formData.rememberMe
-            })
-            .then(response => response.data);
+            });
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
     },
-    logUserOut: () => {
-        return axiosInst
-            .delete(`/auth/login`)
-            .then(response => response.data);
+    logOut: async () => {
+        try {
+            const response = await axiosInst.delete(`/auth/login`);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
     }
 }

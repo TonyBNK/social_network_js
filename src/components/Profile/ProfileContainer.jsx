@@ -1,14 +1,14 @@
 import React from "react";
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
-import {
-    getUserProfile,
-    getUserStatus,
-    updateProfileStatus
-} from "../../bll/reducers/profileReducer";
 import {withRouter} from "react-router-dom";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
+import {
+    getUserProfile,
+    getUserStatus,
+    updateMyStatus
+} from "../../bll/thunks/thunks";
 
 class ProfileContainer extends React.PureComponent {
     componentDidMount() {
@@ -45,7 +45,7 @@ export default compose(
     connect(mapStateToProps, {
         getUserProfile,
         getUserStatus,
-        updateProfileStatus
+        updateMyStatus
     }),
     withRouter,
     withAuthRedirect

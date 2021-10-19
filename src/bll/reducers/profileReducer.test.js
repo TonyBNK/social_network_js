@@ -1,6 +1,6 @@
 import {v1} from "uuid";
-import cat_with_tongue from "../../img/cat_with_tongue.jpg";
-import angry_cat from "../../img/angry_cat.webp";
+import cat_with_tongue from "../../images/cat_with_tongue.jpg";
+import angry_cat from "../../images/angry_cat.webp";
 import {addNewPost, getUser, profileReducer, setStatus} from "./profileReducer";
 
 

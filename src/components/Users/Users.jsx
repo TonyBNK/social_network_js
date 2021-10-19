@@ -1,6 +1,6 @@
 import React from "react";
 import c from './Users.module.css';
-import catUser from '../../img/catUser.png';
+import catUser from '../../images/catUser.png';
 import {NavLink} from "react-router-dom";
 
 

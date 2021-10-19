@@ -1,8 +1,8 @@
-import {addNewPost} from "../../../bll/reducers/profileReducer";
 import {Posts} from "./Posts";
 import {connect} from "react-redux";
 import {compose} from "redux";
 import React from "react";
+import {addNewPost} from "../../../bll/actions/actions";
 
 const mapStateToProps = (state) => ({
     posts: state.profilePage.posts

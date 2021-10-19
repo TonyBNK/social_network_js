@@ -1,9 +1,9 @@
 import {v1} from "uuid";
-import vsratiy_cat from "../../img/vsratiy_cat.jpg";
-import doge from "../../img/doge.jpg";
-import parrot from "../../img/parrot.jpg";
-import hamster from "../../img/hamster.jpg";
-import turtle from "../../img/turtle.jpg";
+import vsratiy_cat from "../../images/vsratiy_cat.jpg";
+import doge from "../../images/doge.jpg";
+import parrot from "../../images/parrot.jpg";
+import hamster from "../../images/hamster.jpg";
+import turtle from "../../images/turtle.jpg";
 
 
 const initialState = {
@@ -16,8 +16,9 @@ const initialState = {
     ]
 };
 
-const friendsReducer = (state = initialState, action) => {
-    return state;
+export const friendsReducer = (state = initialState, action) => {
+    switch (action.type) {
+        default:
+            return state;
+    }
 }
-
-export default friendsReducer;

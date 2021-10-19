@@ -1,5 +1,5 @@
 import React from "react";
-import settings from "../../img/Settings.gif";
+import settings from "../../images/Settings.gif";
 
 export const Preloader = () => {
     return(

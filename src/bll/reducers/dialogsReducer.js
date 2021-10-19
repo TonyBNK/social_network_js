@@ -1,17 +1,11 @@
 import {v1} from "uuid";
-import vsratiy_cat from "../../img/vsratiy_cat.jpg";
-import doge from "../../img/doge.jpg";
-import parrot from "../../img/parrot.jpg";
-import hamster from "../../img/hamster.jpg";
-import turtle from "../../img/turtle.jpg";
+import vsratiy_cat from "../../images/vsratiy_cat.jpg";
+import doge from "../../images/doge.jpg";
+import parrot from "../../images/parrot.jpg";
+import hamster from "../../images/hamster.jpg";
+import turtle from "../../images/turtle.jpg";
+import {ADD_NEW_MESSAGE} from "../actions/actions";
 
-
-const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
-
-export const addNewMessage = (newMessageText) => ({
-    type: ADD_NEW_MESSAGE,
-    newMessageText
-});
 
 const initialState = {
     dialogs: [
@@ -29,7 +23,7 @@ const initialState = {
     isAuth: false
 };
 
-const dialogsReducer = (state = initialState, action) => {
+export const dialogsReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_NEW_MESSAGE:
@@ -45,5 +39,3 @@ const dialogsReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default dialogsReducer;

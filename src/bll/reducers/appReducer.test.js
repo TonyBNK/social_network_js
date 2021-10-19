@@ -1,4 +1,4 @@
-import {initializedSuccess} from "../actions/actions";
+import {setInitialized} from "../actions/actions";
 import {appReducer} from "./appReducer";
 
 
@@ -11,7 +11,7 @@ beforeEach(() => {
 });
 
 test('initialized value should be true', () => {
-   let newState = appReducer(initialState, initializedSuccess());
+   let newState = appReducer(initialState, setInitialized());
 
    expect(newState.initialized).toBeTruthy();
 });

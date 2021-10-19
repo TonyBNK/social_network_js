@@ -1,11 +1,5 @@
 import React from "react";
 import {connect} from "react-redux";
-import {
-    followUser,
-    requestUsers,
-    setFollowingProgress,
-    unfollowUser
-} from "../../bll/reducers/usersReducer";
 import {Users} from "./Users";
 import {Preloader} from "../Preloader/Preloader";
 import {
@@ -14,6 +8,8 @@ import {
     getUsers, getUsersTotalCount
 } from "../../bll/selectors/usersSelector";
 import {compose} from "redux";
+import {followUser, requestUsers, unfollowUser} from "../../bll/thunks/thunks";
+import {setFollowingProcess} from "../../bll/actions/actions";
 
 
 class UsersContainer extends React.PureComponent {
@@ -55,7 +51,7 @@ export default compose(
     connect(mapStateToProps, {
         followUser,
         unfollowUser,
-        setFollowingProgress,
+        setFollowingProgress: setFollowingProcess,
         requestUsers
     })
 )(UsersContainer);
