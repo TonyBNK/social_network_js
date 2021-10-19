@@ -5,6 +5,7 @@ import {
     showUsers, unfollow
 } from "../actions/actions";
 import {stopSubmit} from "redux-form";
+import {followUnfollowFlow} from "../../utils/utils";
 
 
 export const getUserProfile = (userId = 19542) =>
@@ -51,29 +52,13 @@ export const requestUsers = (page = 1, pageSize) =>
     };
 export const followUser = (userId) =>
     async (dispatch) => {
-        try {
-            dispatch(setFollowingProcess(true, userId));
-            const data = await usersAPI.followUser(userId);
-            if (data.resultCode === 0) {
-                dispatch(follow(userId));
-            }
-            dispatch(setFollowingProcess(false, userId));
-        } catch (e) {
-            console.log(e);
-        }
+        const apiMethod = usersAPI.followUser.bind(usersAPI);
+        followUnfollowFlow(dispatch, userId, apiMethod, follow);
     };
 export const unfollowUser = (userId) =>
     async (dispatch) => {
-        try {
-            dispatch(setFollowingProcess(true, userId));
-            const data = await usersAPI.unfollowUser(userId);
-            if (data.resultCode === 0) {
-                dispatch(unfollow(userId));
-            }
-            dispatch(setFollowingProcess(false, userId));
-        } catch (e) {
-            console.log(e);
-        }
+        const apiMethod = usersAPI.unfollowUser.bind(usersAPI);
+        followUnfollowFlow(dispatch, userId, apiMethod, unfollow);
     };
 export const setAuthentication = () =>
     async (dispatch) => {

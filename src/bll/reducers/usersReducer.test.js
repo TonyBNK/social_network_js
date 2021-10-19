@@ -1,12 +1,10 @@
-import usersReducer, {
-    changeCurrentPageSuccess,
-    followSuccess,
-    setFetching,
-    setFollowingProgress,
-    setUsers,
-    setUsersTotalCount,
-    unfollowSuccess
-} from "./usersReducer";
+import {usersReducer} from "./usersReducer";
+import {
+    changeCurrentPage,
+    follow, setFetching, setFollowingProcess, setUsersTotalCount,
+    showUsers,
+    unfollow
+} from "../actions/actions";
 
 
 let initialState;
@@ -66,25 +64,25 @@ beforeEach(() => {
 });
 
 test('user should become followed', () => {
-    let newState = usersReducer(initialState, followSuccess(20296));
+    let newState = usersReducer(initialState, follow(20296));
 
     expect(newState.users[0].followed).toBeTruthy();
 });
 
 test('user should become unfollowed', () => {
-    let newState = usersReducer(initialState, unfollowSuccess(20295));
+    let newState = usersReducer(initialState, unfollow(20295));
 
     expect(newState.users[1].followed).not.toBeTruthy();
 });
 
 test('users should be set', () => {
-    let newState = usersReducer(initialState, setUsers(users));
+    let newState = usersReducer(initialState, showUsers(users));
 
     expect(newState.users.length).toBe(3);
 });
 
 test('current page should be changed', () => {
-    let newState = usersReducer(initialState, changeCurrentPageSuccess(2));
+    let newState = usersReducer(initialState, changeCurrentPage(2));
 
     expect(newState.currentPage).toBe(2);
 });
@@ -102,7 +100,7 @@ test('fetching should be started', () => {
 });
 
 test('following progress should be set', () => {
-    let newState = usersReducer(initialState, setFollowingProgress(true, 20295));
+    let newState = usersReducer(initialState, setFollowingProcess(true, 20295));
 
     expect(newState.followingInProgress.length).toBe(1);
 });

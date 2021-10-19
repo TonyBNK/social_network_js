@@ -4,7 +4,8 @@ import doge from "../../images/doge.jpg";
 import parrot from "../../images/parrot.jpg";
 import hamster from "../../images/hamster.jpg";
 import turtle from "../../images/turtle.jpg";
-import dialogsReducer, {addNewMessage} from "./dialogsReducer";
+import {dialogsReducer} from "./dialogsReducer";
+import {addNewMessage} from "../actions/actions";
 
 let initialState;
 
