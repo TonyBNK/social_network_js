@@ -37,7 +37,7 @@ export const Posts = (
     );
 };
 
-const NewPostForm = (
+const NewPostForm = React.memo((
     {
         handleSubmit
     }
@@ -59,7 +59,7 @@ const NewPostForm = (
             </div>
         </form>
     )
-}
+});
 
 const NewPostReduxForm = reduxForm({
     form: 'newPost'

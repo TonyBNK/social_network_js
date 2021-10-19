@@ -16,7 +16,7 @@ import {
 import {compose} from "redux";
 
 
-class UsersContainer extends React.Component {
+class UsersContainer extends React.PureComponent {
     componentDidMount() {
         this.props.requestUsers(this.props.currentPage, this.props.pageSize);
     }

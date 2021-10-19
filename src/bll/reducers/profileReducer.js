@@ -11,11 +11,11 @@ const SET_STATUS = 'SET-STATUS';
 
 
 export const addNewPost = (newPostText) => ({type: ADD_NEW_POST, newPostText});
-const getUser = (profile) => ({
+export const getUser = (profile) => ({
     type: GET_USER_PROFILE,
     profile
 });
-const setStatus = (status) => ({
+export const setStatus = (status) => ({
     type: SET_STATUS,
     status
 });
@@ -69,7 +69,7 @@ const initialState = {
     status: '',
 }
 
-const profileReducer = (state = initialState, action) => {
+export const profileReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case ADD_NEW_POST: {
@@ -100,5 +100,3 @@ const profileReducer = (state = initialState, action) => {
             return state;
     }
 }
-
-export default profileReducer;

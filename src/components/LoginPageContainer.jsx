@@ -5,7 +5,7 @@ import {compose} from "redux";
 import {withProfileRedirect} from "../hoc/withProfileRedirect";
 import {logIn} from "../bll/thunks/thunks";
 
-class LoginPageContainer extends React.Component {
+class LoginPageContainer extends React.PureComponent {
 
     render = () => {
         return <LoginPage
