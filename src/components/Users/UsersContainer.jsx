@@ -14,26 +14,36 @@ import {setFollowingProcess} from "../../bll/actions/actions";
 
 class UsersContainer extends React.PureComponent {
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize);
-    }
-
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        return nextProps !== this.props || nextState !== this.state
+        const {requestUsers, currentPage, pageSize} = this.props;
+        requestUsers(currentPage, pageSize);
     }
 
     render() {
+        const {
+            isFetching,
+            users,
+            currentPage,
+            pageSize,
+            usersTotalCount,
+            followUser,
+            unfollowUser,
+            followingInProgress,
+            setFollowingProcess,
+            requestUsers
+        } = this.props;
+
         return <div>
-            {this.props.isFetching ? <Preloader/> : null}
+            {isFetching ? <Preloader/> : null}
             <Users
-                users={this.props.users}
-                currentPage={this.props.page}
-                pageSize={this.props.pageSize}
-                usersTotalCount={this.props.usersTotalCount}
-                follow={this.props.followUser}
-                unfollow={this.props.unfollowUser}
-                followingInProgress={this.props.followingInProgress}
-                setFollowingProgress={this.props.setFollowingProgress}
-                requestUsers={this.props.requestUsers}
+                users={users}
+                currentPage={currentPage}
+                pageSize={pageSize}
+                usersTotalCount={usersTotalCount}
+                follow={followUser}
+                unfollow={unfollowUser}
+                followingInProgress={followingInProgress}
+                setFollowingProcess={setFollowingProcess}
+                requestUsers={requestUsers}
             />
         </div>
     }
@@ -41,7 +51,7 @@ class UsersContainer extends React.PureComponent {
 
 const mapStateToProps = (state) => ({
     users: getUsers(state),
-    page: getCurrentPage(state),
+    currentPage: getCurrentPage(state),
     pageSize: getPageSize(state),
     usersTotalCount: getUsersTotalCount(state),
     followingInProgress: getFollowingInProgress(state)
@@ -51,7 +61,7 @@ export default compose(
     connect(mapStateToProps, {
         followUser,
         unfollowUser,
-        setFollowingProgress: setFollowingProcess,
+        setFollowingProcess,
         requestUsers
     })
 )(UsersContainer);

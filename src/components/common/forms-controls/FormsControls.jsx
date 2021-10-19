@@ -2,17 +2,22 @@ import React from "react";
 import c from './FormsControls.module.scss';
 
 
-const FormControl = React.memo(({input, meta, ...props}) => {
-    const hasError = meta.error && meta.touched;
+const FormControl = React.memo((
+    {
+        meta: {error, touched},
+        children
+    }
+) => {
+    const hasError = error && touched;
 
     return (
         <div className={`${c.formControl} ${hasError ? c.error : ''}`}>
             <div>
                 {
-                    props.children
+                    children
                 }
             </div>
-            {hasError && <span>{meta.error}</span>}
+            {hasError && <span>{error}</span>}
         </div>
     )
 });

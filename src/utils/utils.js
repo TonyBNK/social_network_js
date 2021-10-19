@@ -12,3 +12,9 @@ export const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCrea
         console.log(e);
     }
 }
+
+export const updateObjectInArray = (items, itemId, objPropName, newObjProps) => {
+    return items.map(u =>
+        u[objPropName] === itemId ? {...u, ...newObjProps} : u
+    )
+}

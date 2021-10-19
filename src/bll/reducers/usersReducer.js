@@ -7,6 +7,7 @@ import {
     SHOW_USERS,
     UNFOLLOW
 } from "../actions/actions";
+import {updateObjectInArray} from "../../utils/utils";
 
 
 const initialState = {
@@ -23,16 +24,12 @@ export const usersReducer = (state = initialState, action) => {
         case FOLLOW:
             return {
                 ...state,
-                users: state.users.map(u =>
-                    u.id === action.userId ? {...u, followed: true} : u
-                )
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: true})
             }
         case UNFOLLOW:
             return {
                 ...state,
-                users: state.users.map(u =>
-                    u.id === action.userId ? {...u, followed: false} : u
-                )
+                users: updateObjectInArray(state.users, action.userId, 'id', {followed: false})
             }
         case SHOW_USERS:
             return {
