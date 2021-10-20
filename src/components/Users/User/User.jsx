@@ -10,8 +10,6 @@ export const User = React.memo((
         name,
         status,
         photo,
-        country,
-        city,
         isFollowed,
         follow,
         unfollow,
@@ -45,9 +43,6 @@ export const User = React.memo((
                 </div>
                 <div className={c.text}>
                     {status}
-                </div>
-                <div className={c.address}>
-                    {`${country ? country : ''}`}, {`${city ? city: ''}`}
                 </div>
             </div>
         </div>

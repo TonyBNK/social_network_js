@@ -12,25 +12,28 @@ import {
 
 class ProfileContainer extends React.PureComponent {
     componentDidMount() {
+        const {history, getUserProfile, getUserStatus} = this.props;
+
         let userId = this.props.match.params.userId;
 
         if (!userId){
             userId = this.props.userId;
             if (!userId){
-                this.props.history.push('/login');
+                history.push('/login');
             }
         }
 
-        this.props.getUserProfile(userId);
-        this.props.getUserProfile(userId);
-        this.props.getUserStatus(userId);
+        getUserProfile(userId);
+        getUserStatus(userId);
     }
 
     render = () => {
+        const {profile, status, updateMyStatus, ...restProps} = this.props;
+
         return <Profile
-            profile={this.props.profile}
-            status={this.props.status}
-            updateProfileStatus={this.props.updateProfileStatus}
+            profile={profile}
+            status={status}
+            updateMyStatus={updateMyStatus}
         />
     }
 }

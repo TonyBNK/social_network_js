@@ -5,7 +5,7 @@ import c from './ProfileStatus.module.css';
 const ProfileStatusWithHooks = React.memo((
     {
         status,
-        updateProfileStatus
+        updateStatus
     }
 ) => {
     const [editMode, setEditMode] = useState(false);
@@ -21,7 +21,7 @@ const ProfileStatusWithHooks = React.memo((
 
     const deactivateEditMode = () => {
         setEditMode(false);
-        updateProfileStatus(profileStatus);
+        updateStatus(profileStatus);
     }
 
     const updateStatusLocally = (e) => {
