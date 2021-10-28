@@ -2,7 +2,7 @@ import React from "react";
 import c from './Users.module.scss';
 import catUser from '../../images/catUser.png';
 import {NavLink} from "react-router-dom";
-import {Paginator} from "./Paginator/Paginator";
+import {Paginator} from "../common/Paginator/Paginator";
 import {User} from "./User/User";
 
 
@@ -39,8 +39,8 @@ export const Users = React.memo((
                 <Paginator
                     currentPage={currentPage}
                     pageSize={pageSize}
-                    usersTotalCount={usersTotalCount}
-                    requestUsers={requestUsers}
+                    itemsTotalCount={usersTotalCount}
+                    requestItems={requestUsers}
                 />
             </div>
             <span>
