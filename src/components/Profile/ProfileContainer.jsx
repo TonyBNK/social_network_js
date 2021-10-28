@@ -29,7 +29,7 @@ class ProfileContainer extends React.PureComponent {
 
     render = () => {
         const {profile, status, updateMyStatus, ...restProps} = this.props;
-
+debugger
         return <Profile
             profile={profile}
             status={status}
@@ -45,12 +45,11 @@ const mapStateToProps = (state) => ({
 });
 
 export default compose(
+    withRouter,
+    withAuthRedirect,
     connect(mapStateToProps, {
         getUserProfile,
         getUserStatus,
         updateMyStatus
-    }),
-    withRouter,
-    withAuthRedirect
+    })
 )(ProfileContainer);
-

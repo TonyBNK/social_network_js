@@ -7,7 +7,7 @@ export const Profile = (
     {
         profile,
         status,
-        updateStatus
+        updateMyStatus
     }
 ) => {
     return (
@@ -15,7 +15,7 @@ export const Profile = (
             <ProfileInfo
                 profile={profile}
                 status={status}
-                updateStatus={updateStatus}
+                updateMyStatus={updateMyStatus}
             />
             <PostsContainer/>
         </div>

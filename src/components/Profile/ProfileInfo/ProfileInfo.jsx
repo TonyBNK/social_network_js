@@ -7,7 +7,7 @@ export const ProfileInfo = React.memo((
     {
         profile,
         status,
-        updateStatus
+        updateMyStatus
     }
 ) => {
     if (!profile) {
@@ -21,7 +21,7 @@ export const ProfileInfo = React.memo((
             </div>
             <ProfileStatus
                 status={status}
-                updateStatus={updateStatus}
+                updateMyStatus={updateMyStatus}
             />
             <div className={c.description}>
                 <span className={c.fullName}>

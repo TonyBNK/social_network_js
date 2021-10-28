@@ -1,5 +1,6 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import c from './ProfileStatus.module.css';
+
 
 class ProfileStatus extends React.Component {
     state = {
@@ -10,20 +11,20 @@ class ProfileStatus extends React.Component {
     activateEditMode = () => {
         this.setState({
             isEdit: true
-        });
+        })
     }
 
     deactivateEditMode = () => {
         this.setState({
             isEdit: false
         });
-        this.props.updateProfileStatus(this.state.status);
+        this.props.updateMyStatus(this.state.status);
     }
 
     updateStatusLocally = (e) => {
-        this.setState(({
+        this.setState({
             status: e.currentTarget.value
-        }));
+        })
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -40,16 +41,15 @@ class ProfileStatus extends React.Component {
                 {
                     this.state.isEdit
                         ? <div>
-                            <input
-                                value={this.state.status}
-                                onBlur={this.deactivateEditMode}
-                                autoFocus
-                                onChange={this.updateStatusLocally}/>
+                            <input value={this.state.status}
+                                   onBlur={this.deactivateEditMode}
+                                   autoFocus
+                                   onChange={this.updateStatusLocally}/>
                         </div>
                         : <div>
-                            <span onDoubleClick={this.activateEditMode}>
+                        <span onDoubleClick={this.activateEditMode}>
                             {this.props.status}
-                    </span>
+                        </span>
                         </div>
                 }
             </div>
