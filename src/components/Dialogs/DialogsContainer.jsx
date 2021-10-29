@@ -10,8 +10,10 @@ const mapStateToProps = (state) => ({
     messages: state.dialogsPage.messages
 });
 
-export const DialogsContainer = compose(
+const DialogsContainer = compose(
     withAuthRedirect,
     connect(mapStateToProps, {addNewMessage}),
     React.memo
 )(Dialogs);
+
+export default DialogsContainer;
