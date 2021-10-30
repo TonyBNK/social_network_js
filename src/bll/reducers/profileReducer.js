@@ -4,7 +4,7 @@ import cat_with_tongue from "../../images/cat_with_tongue.jpg";
 import angry_cat from "../../images/angry_cat.webp";
 import {
     ADD_NEW_POST,
-    GET_USER,
+    GET_USER, SET_MY_PHOTO,
     SET_MY_STATUS
 } from "../actions/actions";
 
@@ -26,6 +26,7 @@ const initialState = {
     ],
     profile: null,
     status: '',
+    photos: null,
     userId: null
 }
 
@@ -54,6 +55,15 @@ export const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 status: action.status
+            }
+        case SET_MY_PHOTO:
+            return {
+                ...state,
+                profile: {
+                    ...state.profile,
+                    photos: action.photos
+                }
+
             }
         default:
             return state;

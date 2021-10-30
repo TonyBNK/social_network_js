@@ -2,7 +2,7 @@ import {authAPI, followAPI, profileAPI, usersAPI} from "../../api/api";
 import {
     changeCurrentPage, follow, getUser, setInitialized, setAuthenticated,
     setFetching, setFollowingProcess, setMyStatus, setUsersTotalCount,
-    showUsers, unfollow
+    showUsers, unfollow, setMyPhoto
 } from "../actions/actions";
 import {stopSubmit} from "redux-form";
 import {followUnfollowFlow} from "../../utils/utils";
@@ -32,6 +32,17 @@ export const updateMyStatus = (newStatus) =>
             const response = await profileAPI.updateMyStatus(newStatus);
             if (response.data.resultCode === 0) {
                 dispatch(setMyStatus(newStatus));
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
+export const updateMyPhoto = (newPhoto) =>
+    async (dispatch) => {
+        try {
+            const response = await profileAPI.updateMyPhoto(newPhoto);
+            if (response.data.resultCode === 0) {
+                dispatch(setMyPhoto(response.data.data.photos));
             }
         } catch (e) {
             console.log(e);

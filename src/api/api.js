@@ -62,6 +62,19 @@ export const profileAPI = {
             console.log(e);
         }
     },
+    updateMyPhoto: async (file) => {
+        try {
+            const formData = new FormData();
+            formData.append('image', file);
+            return await axiosInst.put(`profile/photo`, formData, {
+                headers: {
+                    'Content-type': 'multipart/form-data'
+                }
+            });
+        } catch (e) {
+            console.log(e);
+        }
+    },
 }
 
 export const authAPI = {

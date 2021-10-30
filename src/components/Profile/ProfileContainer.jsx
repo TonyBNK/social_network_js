@@ -6,7 +6,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {
     getUserProfile,
-    getUserStatus,
+    getUserStatus, updateMyPhoto,
     updateMyStatus
 } from "../../bll/thunks/thunks";
 
@@ -18,6 +18,7 @@ class ProfileContainer extends React.PureComponent {
 
         if (!userId){
             userId = this.props.userId;
+
             if (!userId){
                 history.push('/login');
             }
@@ -38,12 +39,14 @@ class ProfileContainer extends React.PureComponent {
     }
 
     render = () => {
-        const {profile, status, updateMyStatus, ...restProps} = this.props;
+        const {profile, status, updateMyStatus, updateMyPhoto, ...restProps} = this.props;
 
         return <Profile
+            isOwner={!this.props.match.params.userId}
             profile={profile}
             status={status}
             updateMyStatus={updateMyStatus}
+            updateMyPhoto={updateMyPhoto}
         />
     }
 }
@@ -60,6 +63,7 @@ export default compose(
     connect(mapStateToProps, {
         getUserProfile,
         getUserStatus,
-        updateMyStatus
+        updateMyStatus,
+        updateMyPhoto
     })
 )(ProfileContainer);

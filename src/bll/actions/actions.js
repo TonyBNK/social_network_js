@@ -4,6 +4,7 @@ export const ADD_NEW_MESSAGE = 'social_network/dialogs/ADD_NEW_MESSAGE';
 export const ADD_NEW_POST = 'social_network/profile/ADD_NEW_POST';
 export const GET_USER = 'social_network/profile/GET_USER';
 export const SET_MY_STATUS = 'social_network/profile/SET_MY_STATUS';
+export const SET_MY_PHOTO = 'social_network/profile/SET_MY_PHOTO';
 export const FOLLOW = 'social_network/users/FOLLOW';
 export const UNFOLLOW = 'social_network/users/UNFOLLOW';
 export const SHOW_USERS = 'social_network/users/SHOW_USERS';
@@ -40,6 +41,10 @@ export const getUser = (profile) => ({
 export const setMyStatus = (status) => ({
     type: SET_MY_STATUS,
     status
+});
+export const setMyPhoto = (photos) => ({
+    type: SET_MY_PHOTO,
+    photos
 });
 export const follow = (userId) => ({
     type: FOLLOW,

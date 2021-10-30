@@ -5,17 +5,21 @@ import {PostsContainer} from "./Posts/PostsContainer";
 
 export const Profile = (
     {
+        isOwner,
         profile,
         status,
-        updateMyStatus
+        updateMyStatus,
+        updateMyPhoto
     }
 ) => {
     return (
         <div className={c.profile}>
             <ProfileInfo
+                isOwner={isOwner}
                 profile={profile}
                 status={status}
                 updateMyStatus={updateMyStatus}
+                updateMyPhoto={updateMyPhoto}
             />
             <PostsContainer/>
         </div>
