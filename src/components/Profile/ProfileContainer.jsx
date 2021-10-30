@@ -11,7 +11,7 @@ import {
 } from "../../bll/thunks/thunks";
 
 class ProfileContainer extends React.PureComponent {
-    componentDidMount() {
+    refreshProfile(){
         const {history, getUserProfile, getUserStatus} = this.props;
 
         let userId = this.props.match.params.userId;
@@ -25,6 +25,16 @@ class ProfileContainer extends React.PureComponent {
 
         getUserProfile(userId);
         getUserStatus(userId);
+    }
+
+    componentDidMount() {
+        this.refreshProfile();
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId){
+            this.refreshProfile();
+        }
     }
 
     render = () => {

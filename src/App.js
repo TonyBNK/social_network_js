@@ -32,7 +32,7 @@ class App extends React.Component {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
-                <React.Suspense fallback={<div>Загрузка...</div>}>
+                <React.Suspense fallback={<Preloader/>}>
                     <Route
                         path='/profile/:userId?'
                         render={() => <ProfileContainer/>}
@@ -49,19 +49,19 @@ class App extends React.Component {
                         render={() => <LoginPageContainer/>}
                     />
                 </React.Suspense>
-                    <Route
-                        path='/news'
-                        render={() => <News/>}
-                    />
-                    <Route
-                        path='/music'
-                        render={() => <Music/>}
-                    />
+                <Route
+                    path='/news'
+                    render={() => <News/>}
+                />
+                <Route
+                    path='/music'
+                    render={() => <Music/>}
+                />
 
-                    <Route
-                        path='/settings'
-                        render={() => <Settings/>}
-                    />
+                <Route
+                    path='/settings'
+                    render={() => <Settings/>}
+                />
             </div>
         );
     }
