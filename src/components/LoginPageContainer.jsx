@@ -9,12 +9,17 @@ class LoginPageContainer extends React.PureComponent {
 
     render = () => {
         return <LoginPage
+            captchaURL={this.props.captchaURL}
             logIn={this.props.logIn}/>
     }
 }
 
+const mapStateToProps = (state) => ({
+    captchaURL: state.auth.captchaURL
+});
+
 export default compose(
     withProfileRedirect,
-    connect(null, {logIn}),
+    connect(mapStateToProps, {logIn}),
     React.memo
 )(LoginPageContainer);

@@ -1,8 +1,14 @@
-import {authAPI, followAPI, profileAPI, usersAPI} from "../../api/api";
+import {
+    authAPI,
+    followAPI,
+    profileAPI,
+    securityAPI,
+    usersAPI
+} from "../../api/api";
 import {
     changeCurrentPage, follow, getUser, setInitialized, setAuthenticated,
     setFetching, setFollowingProcess, setMyStatus, setUsersTotalCount,
-    showUsers, unfollow, setMyPhoto, setEdit
+    showUsers, unfollow, setMyPhoto, setEdit, getCaptcha
 } from "../actions/actions";
 import {stopSubmit} from "redux-form";
 import {followUnfollowFlow} from "../../utils/utils";
@@ -114,6 +120,10 @@ export const logIn = (formData) =>
             if (data.resultCode === 0) {
                 dispatch(setAuthentication());
             } else {
+                if (data.resultCode === 10) {
+                    const response = await securityAPI.getCaptchaURL();
+                    dispatch(getCaptcha(response.url));
+                }
                 const errorMessage = data.messages.length !== 0 ? data.messages[0] : 'Some error!'
                 dispatch(stopSubmit('login', {_error: errorMessage}));
             }

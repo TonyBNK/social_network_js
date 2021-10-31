@@ -1,10 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import c from './ProfileInfo.module.scss';
 import {Preloader} from "../../Preloader/Preloader";
 import ProfileStatus from "./ProfileStatus/ProfileStatusWithHooks";
 import avatar from "../../../images/catUser.png";
 import {ProfileDescription} from "./ProfileDescription/ProfileDescription";
-import ProfileDescriptionForm from "./ProfileDescriptionForm/ProfileDescriptionForm";
+import ProfileDescriptionForm
+    from "./ProfileDescriptionForm/ProfileDescriptionForm";
 
 
 export const ProfileInfo = React.memo((

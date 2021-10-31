@@ -1,4 +1,5 @@
 export const SET_AUTHENTICATED = 'social_network/auth/SET_AUTHENTICATED';
+export const GET_CAPTCHA_URL = 'social_network/auth/GET_CAPTCHA_URL';
 export const SET_INITIALIZED = 'social_network/app/SET_INITIALIZED';
 export const SET_EDIT_MODE = 'social_network/app/SET_EDIT_MODE';
 export const ADD_NEW_MESSAGE = 'social_network/dialogs/ADD_NEW_MESSAGE';
@@ -24,8 +25,12 @@ export const setAuthenticated = (userId, login, email, isAuth) => ({
         isAuth
     }
 });
+export const getCaptcha = (captchaURL) => ({
+    type: GET_CAPTCHA_URL,
+    captchaURL
+});
 export const setInitialized = () => ({
-   type: SET_INITIALIZED
+    type: SET_INITIALIZED
 });
 export const setEdit = (isEdit) => ({
     type: SET_EDIT_MODE,

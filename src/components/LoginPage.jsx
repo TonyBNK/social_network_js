@@ -9,6 +9,7 @@ const maxLength30 = maxLengthCreator(30);
 
 export const LoginPage = (
     {
+        captchaURL,
         logIn
     }
 ) => {
@@ -19,7 +20,7 @@ export const LoginPage = (
     return (
         <div>
             <h1>Login</h1>
-            <LoginReduxForm onSubmit={submitLogIn}/>
+            <LoginReduxForm onSubmit={submitLogIn} captchaURL={captchaURL}/>
         </div>
     )
 }
@@ -27,7 +28,8 @@ export const LoginPage = (
 const LoginForm = React.memo((
     {
         handleSubmit,
-        error
+        error,
+        captchaURL
     }
 ) => {
     return (
@@ -62,6 +64,18 @@ const LoginForm = React.memo((
                     name={'rememberMe'}
                 /> remember me
             </div>
+            {
+                captchaURL && <div>
+                    <img src={captchaURL} alt="captcha"/>
+                    <Field
+                        component={Input}
+                        type={'captcha'}
+                        placeholder={'Captcha'}
+                        name={'captcha'}
+                        validate={[required]}
+                    />
+                </div>
+            }
             <div>
                 <button>Login</button>
             </div>

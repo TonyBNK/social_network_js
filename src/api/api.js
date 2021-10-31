@@ -99,7 +99,8 @@ export const authAPI = {
             const response = await axiosInst.post(`/auth/login`, {
                 email: formData.login,
                 password: formData.password,
-                rememberMe: formData.rememberMe
+                rememberMe: formData.rememberMe,
+                captcha: formData.captcha
             });
             return response.data;
         } catch (e) {
@@ -109,6 +110,17 @@ export const authAPI = {
     logOut: async () => {
         try {
             const response = await axiosInst.delete(`/auth/login`);
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
+    }
+}
+
+export const securityAPI = {
+    getCaptchaURL: async () => {
+        try {
+            const response = await axiosInst.get(`/security/get-captcha-url`);
             return response.data;
         } catch (e) {
             console.log(e);
