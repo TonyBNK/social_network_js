@@ -47,8 +47,9 @@ class App extends React.Component {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <Navbar/>
-                <Switch>
-                    <React.Suspense fallback={<Preloader/>}>
+
+                <React.Suspense fallback={<Preloader/>}>
+                    <Switch>
                         <Route
                             exact path={'/'}
                             render={() => <Redirect to={'/profile'}/>}
@@ -68,24 +69,24 @@ class App extends React.Component {
                             path='/login'
                             render={() => <LoginPageContainer/>}
                         />
-                    </React.Suspense>
-                    <Route
-                        path='/news'
-                        render={() => <News/>}
-                    />
-                    <Route
-                        path='/music'
-                        render={() => <Music/>}
-                    />
-                    <Route
-                        path='/settings'
-                        render={() => <Settings/>}
-                    />
-                    <Route
-                        path='*'
-                        render={() => <h2>404 NOT FOUND</h2>}
-                    />
-                </Switch>
+                        <Route
+                            path='/news'
+                            render={() => <News/>}
+                        />
+                        <Route
+                            path='/music'
+                            render={() => <Music/>}
+                        />
+                        <Route
+                            path='/settings'
+                            render={() => <Settings/>}
+                        />
+                        <Route
+                            path='*'
+                            render={() => <h2>404 NOT FOUND</h2>}
+                        />
+                    </Switch>
+                </React.Suspense>
             </div>
         );
     }
