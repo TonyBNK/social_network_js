@@ -137,6 +137,7 @@ export const logOut = () =>
             const response = await authAPI.logOut();
             if (response.resultCode === 0) {
                 dispatch(setAuthenticated(null, null, null, false));
+                dispatch(getCaptcha(null));
             }
         } catch (e) {
             console.log(e);

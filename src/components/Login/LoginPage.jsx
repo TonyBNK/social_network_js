@@ -1,7 +1,7 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "./common/forms-controls/FormsControls";
-import {maxLengthCreator, required} from "../utils/validators/validators";
+import {Input} from "../common/forms-controls/FormsControls";
+import {maxLengthCreator, required} from "../../utils/validators/validators";
 import c from './LoginPage.module.scss';
 
 
