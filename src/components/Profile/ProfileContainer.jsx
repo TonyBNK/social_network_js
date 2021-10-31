@@ -6,7 +6,7 @@ import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import {
     getUserProfile,
-    getUserStatus, updateMyPhoto,
+    getUserStatus, saveProfile, setEditMode, updateMyPhoto,
     updateMyStatus
 } from "../../bll/thunks/thunks";
 
@@ -39,7 +39,7 @@ class ProfileContainer extends React.PureComponent {
     }
 
     render = () => {
-        const {profile, status, updateMyStatus, updateMyPhoto, ...restProps} = this.props;
+        const {profile, status, editMode, updateMyStatus, updateMyPhoto, saveProfile, setEditMode, ...restProps} = this.props;
 
         return <Profile
             isOwner={!this.props.match.params.userId}
@@ -47,6 +47,9 @@ class ProfileContainer extends React.PureComponent {
             status={status}
             updateMyStatus={updateMyStatus}
             updateMyPhoto={updateMyPhoto}
+            saveProfile={saveProfile}
+            editMode={editMode}
+            setEditMode={setEditMode}
         />
     }
 }
@@ -55,6 +58,7 @@ const mapStateToProps = (state) => ({
     profile: state.profilePage.profile,
     status: state.profilePage.status,
     userId: state.auth.userId,
+    editMode: state.app.editMode
 });
 
 export default compose(
@@ -64,6 +68,8 @@ export default compose(
         getUserProfile,
         getUserStatus,
         updateMyStatus,
-        updateMyPhoto
+        updateMyPhoto,
+        saveProfile,
+        setEditMode
     })
 )(ProfileContainer);

@@ -2,13 +2,13 @@ import {authAPI, followAPI, profileAPI, usersAPI} from "../../api/api";
 import {
     changeCurrentPage, follow, getUser, setInitialized, setAuthenticated,
     setFetching, setFollowingProcess, setMyStatus, setUsersTotalCount,
-    showUsers, unfollow, setMyPhoto
+    showUsers, unfollow, setMyPhoto, setEdit
 } from "../actions/actions";
 import {stopSubmit} from "redux-form";
 import {followUnfollowFlow} from "../../utils/utils";
 
 
-export const getUserProfile = (userId = 19542) =>
+export const getUserProfile = (userId) =>
     async (dispatch) => {
         try {
             const profile = await profileAPI.getUserProfile(userId);
@@ -17,7 +17,7 @@ export const getUserProfile = (userId = 19542) =>
             console.log(e);
         }
     };
-export const getUserStatus = (userId = 19542) =>
+export const getUserStatus = (userId) =>
     async (dispatch) => {
         try {
             const status = await profileAPI.getUserStatus(userId);
@@ -48,6 +48,30 @@ export const updateMyPhoto = (newPhoto) =>
             console.log(e);
         }
     };
+export const saveProfile = (profile) =>
+    async (dispatch, getState) => {
+        try {
+            const response = await profileAPI.saveProfile(profile);
+            if (response.data.resultCode === 0) {
+                dispatch(getUserProfile(getState().auth.userId));
+                dispatch(setEditMode(false));
+            } else {
+                const errorMessage = response.data.messages.length !== 0 ? response.data.messages[0] : 'Some error!'
+                dispatch(stopSubmit('profileDescription', {_error: errorMessage}));
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    };
+export const setEditMode = (isEdit) =>
+    async (dispatch) => {
+        try {
+            dispatch(setEdit(isEdit));
+        } catch (e) {
+            console.log(e);
+        }
+    };
+
 export const requestUsers = (page = 1, pageSize) =>
     async (dispatch) => {
         try {

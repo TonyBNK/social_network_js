@@ -15,7 +15,7 @@ export const Posts = (
 ) => {
     const postsList = posts.map(p =>
         <Post
-            id={p.id}
+            key={p.id}
             ava={p.ava}
             post={p.post}
             likesCount={p.likesCount}

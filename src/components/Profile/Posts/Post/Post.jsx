@@ -3,7 +3,6 @@ import c from './Post.module.css';
 
 export const Post = (
     {
-        id,
         ava,
         post,
         likesCount

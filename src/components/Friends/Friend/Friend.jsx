@@ -3,13 +3,12 @@ import c from './Friend.module.css';
 
 export const Friend = (
     {
-        id,
         name,
         ava
     }
 ) => {
     return(
-      <div className={c.friend} key={id}>
+      <div className={c.friend}>
           <img src={ava} alt="ava"/>
           <div>{name}</div>
       </div>

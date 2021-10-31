@@ -1,5 +1,6 @@
 export const SET_AUTHENTICATED = 'social_network/auth/SET_AUTHENTICATED';
 export const SET_INITIALIZED = 'social_network/app/SET_INITIALIZED';
+export const SET_EDIT_MODE = 'social_network/app/SET_EDIT_MODE';
 export const ADD_NEW_MESSAGE = 'social_network/dialogs/ADD_NEW_MESSAGE';
 export const ADD_NEW_POST = 'social_network/profile/ADD_NEW_POST';
 export const GET_USER = 'social_network/profile/GET_USER';
@@ -25,6 +26,10 @@ export const setAuthenticated = (userId, login, email, isAuth) => ({
 });
 export const setInitialized = () => ({
    type: SET_INITIALIZED
+});
+export const setEdit = (isEdit) => ({
+    type: SET_EDIT_MODE,
+    isEdit
 });
 export const addNewMessage = (newMessageText) => ({
     type: ADD_NEW_MESSAGE,

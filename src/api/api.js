@@ -1,4 +1,5 @@
 import axios from "axios";
+import {saveProfile} from "../bll/thunks/thunks";
 
 const axiosInst = axios.create({
     baseURL: `https://social-network.samuraijs.com/api/1.0/`,
@@ -71,6 +72,13 @@ export const profileAPI = {
                     'Content-type': 'multipart/form-data'
                 }
             });
+        } catch (e) {
+            console.log(e);
+        }
+    },
+    saveProfile: async (profile) => {
+        try {
+            return await axiosInst.put(`profile`, profile);
         } catch (e) {
             console.log(e);
         }

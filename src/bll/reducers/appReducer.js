@@ -1,8 +1,9 @@
-import {SET_INITIALIZED} from "../actions/actions";
+import {SET_EDIT_MODE, SET_INITIALIZED} from "../actions/actions";
 
 
 const initialState = {
-    isInitialized: false
+    isInitialized: false,
+    editMode: false
 }
 
 export const appReducer = (state = initialState, action) => {
@@ -11,6 +12,11 @@ export const appReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isInitialized: true
+            }
+        case SET_EDIT_MODE:
+            return {
+                ...state,
+                editMode: action.isEdit
             }
         default:
             return state;

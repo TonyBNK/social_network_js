@@ -2,6 +2,7 @@ import React from "react";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import c from './Profile.module.css';
 import {PostsContainer} from "./Posts/PostsContainer";
+import {setEditMode} from "../../bll/thunks/thunks";
 
 export const Profile = (
     {
@@ -9,7 +10,10 @@ export const Profile = (
         profile,
         status,
         updateMyStatus,
-        updateMyPhoto
+        updateMyPhoto,
+        saveProfile,
+        editMode,
+        setEditMode
     }
 ) => {
     return (
@@ -20,6 +24,9 @@ export const Profile = (
                 status={status}
                 updateMyStatus={updateMyStatus}
                 updateMyPhoto={updateMyPhoto}
+                saveProfile={saveProfile}
+                editMode={editMode}
+                setEditMode={setEditMode}
             />
             <PostsContainer/>
         </div>

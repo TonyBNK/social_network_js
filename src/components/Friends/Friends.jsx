@@ -9,7 +9,7 @@ export const Friends = (
 ) => {
     const friendsList = friends.map(f =>
         <Friend
-            id={f.id}
+            key={f.id}
             name={f.name}
             ava={f.ava}
         />
