@@ -1,5 +1,5 @@
 import React from "react";
-import c from './Header.module.css';
+import c from './Header.module.scss';
 import {NavLink} from "react-router-dom";
 import logo from '../../images/logo.png';
 
@@ -17,15 +17,12 @@ export const Header = (
     return (
         <header className={c.head}>
             <img src={logo} alt="логотип"/>
-            <div className={c.loginBlock}>
-                {
-                    isAuth
-                        ? <div>
-                            {login} <button onClick={logOutHandler}>Logout</button>
-                        </div>
-                        : <NavLink to={'/login'}>Login</NavLink>
-                }
-            </div>
+            {
+                isAuth
+                    // ? <button onClick={logOutHandler}>Logout</button>
+                    ? <NavLink to={'/login'} onClick={logOutHandler}>Sign Out</NavLink>
+                    : <NavLink to={'/login'}>Sign In</NavLink>
+            }
         </header>
     );
 };

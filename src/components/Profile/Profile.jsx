@@ -1,6 +1,6 @@
 import React from "react";
 import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
-import c from './Profile.module.css';
+import c from './Profile.module.scss';
 import {PostsContainer} from "./Posts/PostsContainer";
 import {setEditMode} from "../../bll/thunks/thunks";
 

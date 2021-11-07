@@ -1,5 +1,5 @@
 import React from "react";
-import c from './Message.module.css';
+import c from './Message.module.scss';
 
 export const Message = React.memo((
     {

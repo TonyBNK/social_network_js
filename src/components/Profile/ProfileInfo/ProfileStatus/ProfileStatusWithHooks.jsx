@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import c from './ProfileStatus.module.css';
+import c from './ProfileStatus.module.scss';
 
 
 const ProfileStatusWithHooks = React.memo((

@@ -1,8 +1,8 @@
 import React from "react";
-import './App.css';
+import './App.module.scss';
 import {Navbar} from "./components/Navbar/Navbar";
 import {
-    BrowserRouter,
+    BrowserRouter, NavLink,
     Redirect,
     Route,
     Switch,
@@ -17,12 +17,18 @@ import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 import {Preloader} from "./components/Preloader/Preloader";
 import {store} from "./bll/redux-store";
+import c from "./App.module.scss";
+import {Layout, Menu} from "antd";
+import 'antd/dist/antd.css';
+import {FriendsContainer} from "./components/Friends/FriendsContainer";
 
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const LoginPageContainer = React.lazy(() => import('./components/Login/LoginPageContainer'));
 
+
+const {Header, Content, Sider, Footer} = Layout;
 
 class App extends React.Component {
     catchAllUnhandledErrors = () => {
@@ -44,50 +50,57 @@ class App extends React.Component {
         }
 
         return (
-            <div className="app-wrapper">
-                <HeaderContainer/>
-                <Navbar/>
-
-                <React.Suspense fallback={<Preloader/>}>
-                    <Switch>
-                        <Route
-                            exact path={'/'}
-                            render={() => <Redirect to={'/profile'}/>}
-                        />
-                        <Route
-                            path='/profile/:userId?'
-                            render={() => <ProfileContainer/>}
-                        />
-                        <Route
-                            path='/dialogs'
-                            render={() => <DialogsContainer/>}
-                        />
-                        <Route
-                            path={'/users'}
-                            render={() => <UsersContainer/>}/>
-                        <Route
-                            path='/login'
-                            render={() => <LoginPageContainer/>}
-                        />
-                        <Route
-                            path='/news'
-                            render={() => <News/>}
-                        />
-                        <Route
-                            path='/music'
-                            render={() => <Music/>}
-                        />
-                        <Route
-                            path='/settings'
-                            render={() => <Settings/>}
-                        />
-                        <Route
-                            path='*'
-                            render={() => <h2>404 NOT FOUND</h2>}
-                        />
-                    </Switch>
-                </React.Suspense>
-            </div>
+            <Layout className={c.mainContainer}>
+                <Header className={c.header}>
+                    <HeaderContainer/>
+                </Header>
+                <Layout className={c.bodyContainer}>
+                    <Sider className={c.sider}>
+                        <Navbar/>
+                    </Sider>
+                    <Content>
+                        <React.Suspense fallback={<Preloader/>}>
+                            <Switch>
+                                <Route
+                                    exact path={'/'}
+                                    render={() => <Redirect to={'/profile'}/>}
+                                />
+                                <Route
+                                    path='/profile/:userId?'
+                                    render={() => <ProfileContainer/>}
+                                />
+                                <Route
+                                    path='/dialogs'
+                                    render={() => <DialogsContainer/>}
+                                />
+                                <Route
+                                    path={'/users'}
+                                    render={() => <UsersContainer/>}/>
+                                <Route
+                                    path='/login'
+                                    render={() => <LoginPageContainer/>}
+                                />
+                                <Route
+                                    path='/news'
+                                    render={() => <News/>}
+                                />
+                                <Route
+                                    path='/music'
+                                    render={() => <Music/>}
+                                />
+                                <Route
+                                    path='/settings'
+                                    render={() => <Settings/>}
+                                />
+                                <Route
+                                    path='*'
+                                    render={() => <h2>404 NOT FOUND</h2>}
+                                />
+                            </Switch>
+                        </React.Suspense>
+                    </Content>
+                </Layout>
+            </Layout>
         );
     }
 }

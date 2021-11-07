@@ -1,5 +1,5 @@
 import React from "react";
-import c from './Friend.module.css';
+import c from './Friend.module.scss';
 
 export const Friend = (
     {

@@ -1,56 +1,58 @@
 import React from 'react';
-import c from "./Navbar.module.css";
+import c from "./Navbar.module.scss";
 import {NavLink} from "react-router-dom";
 import {FriendsContainer} from "../Friends/FriendsContainer";
+import {Menu} from "antd";
 
 export const Navbar = React.memo(() => {
     return (
-        <nav className={c.navbar}>
-            <div className={c.item}>
+        <Menu theme='light' mode='inline'
+              defaultSelectedKeys={['1']}>
+            <Menu.Item key='1'>
                 <NavLink
                     to='/profile'
                     activeClassName={c.active}>
                     Profile
                 </NavLink>
-            </div>
-            <div className={c.item}>
+            </Menu.Item>
+            <Menu.Item key='2'>
                 <NavLink
                     to='/dialogs'
                     activeClassName={c.active}>
                     Dialogs
                 </NavLink>
-            </div>
-            <div className={c.item}>
+            </Menu.Item>
+            <Menu.Item key='3'>
                 <NavLink
                     to='/news'
                     activeClassName={c.active}>
                     News
                 </NavLink>
-            </div>
-            <div className={c.item}>
+            </Menu.Item>
+            <Menu.Item key='4'>
                 <NavLink
                     to='/music'
                     activeClassName={c.active}>
                     Music
                 </NavLink>
-            </div>
-            <div className={c.item}>
+            </Menu.Item>
+            <Menu.Item key='5'>
                 <NavLink
                     to={'/users'}
                     activeClassName={c.active}>
                     Find Users
                 </NavLink>
-            </div>
-            <div className={c.item}>
+            </Menu.Item>
+            <Menu.Item key='6'>
                 <NavLink
                     to={'/settings'}
                     activeClassName={c.active}>
                     Settings
                 </NavLink>
-            </div>
-            <div className={c.itemFriends}>
-                <FriendsContainer/>
-            </div>
-        </nav>
+            </Menu.Item>
+            <Menu.Item key='7'>
+                {/*<FriendsContainer/>*/}
+            </Menu.Item>
+        </Menu>
     );
 });

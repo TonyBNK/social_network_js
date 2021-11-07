@@ -1,5 +1,5 @@
 import React from "react";
-import c from './Dialog.module.css';
+import c from './Dialog.module.scss';
 import {NavLink} from "react-router-dom";
 
 export const Dialog = React.memo((

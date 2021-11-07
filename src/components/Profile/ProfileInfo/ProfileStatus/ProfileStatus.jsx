@@ -1,5 +1,5 @@
 import React, {ChangeEvent} from "react";
-import c from './ProfileStatus.module.css';
+import c from './ProfileStatus.module.scss';
 
 
 class ProfileStatus extends React.Component {

@@ -1,5 +1,5 @@
 import React from "react";
-import c from './Post.module.css';
+import c from './Post.module.scss';
 
 export const Post = (
     {
