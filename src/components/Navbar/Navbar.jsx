@@ -1,54 +1,41 @@
 import React from 'react';
 import c from "./Navbar.module.scss";
 import {NavLink} from "react-router-dom";
-import {FriendsContainer} from "../Friends/FriendsContainer";
 import {Menu} from "antd";
+
 
 export const Navbar = React.memo(() => {
     return (
         <Menu theme='light' mode='inline'
-              defaultSelectedKeys={['1']}
               className={c.navbarMenu}
         >
-            <Menu.Item key='1'>
-                <NavLink
-                    to='/profile'
-                    activeClassName={c.active}>
+            <Menu.Item key='profile'>
+                <NavLink to='/profile'>
                     Profile
                 </NavLink>
             </Menu.Item>
-            <Menu.Item key='2'>
-                <NavLink
-                    to='/dialogs'
-                    activeClassName={c.active}>
+            <Menu.Item key='dialogs'>
+                <NavLink to='/dialogs'>
                     Dialogs
                 </NavLink>
             </Menu.Item>
-            <Menu.Item key='3'>
-                <NavLink
-                    to='/news'
-                    activeClassName={c.active}>
+            <Menu.Item key='news'>
+                <NavLink to='/news'>
                     News
                 </NavLink>
             </Menu.Item>
-            <Menu.Item key='4'>
-                <NavLink
-                    to='/music'
-                    activeClassName={c.active}>
+            <Menu.Item key='music'>
+                <NavLink to='/music'>
                     Music
                 </NavLink>
             </Menu.Item>
-            <Menu.Item key='5'>
-                <NavLink
-                    to={'/users'}
-                    activeClassName={c.active}>
+            <Menu.Item key='users'>
+                <NavLink to={'/users'}>
                     Find Users
                 </NavLink>
             </Menu.Item>
-            <Menu.Item key='6'>
-                <NavLink
-                    to={'/settings'}
-                    activeClassName={c.active}>
+            <Menu.Item key='settings'>
+                <NavLink to={'/settings'}>
                     Settings
                 </NavLink>
             </Menu.Item>

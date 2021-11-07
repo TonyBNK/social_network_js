@@ -1,5 +1,8 @@
 import React from "react";
 import c from './Friend.module.scss';
+import {Avatar} from 'antd';
+import {UserOutlined} from '@ant-design/icons';
+
 
 export const Friend = (
     {
@@ -7,10 +10,10 @@ export const Friend = (
         ava
     }
 ) => {
-    return(
-      <div className={c.friendContainer}>
-          <img src={ava} alt="ava"/>
-          <div>{name}</div>
-      </div>
+    return (
+        <div className={c.friendContainer}>
+            <Avatar size={60} src={ava} icon={<UserOutlined/>}/>
+            <div>{name}</div>
+        </div>
     );
 }

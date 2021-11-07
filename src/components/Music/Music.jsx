@@ -1,10 +1,7 @@
 import React from "react";
-import c from './Music.module.scss';
+import { Empty } from 'antd';
+
 
 export const Music = () => {
-    return(
-        <div>
-            Music
-        </div>
-    );
+    return <Empty/>
 };

@@ -56,7 +56,9 @@ class App extends React.Component {
                 <Layout className={c.bodyContainer}>
                     <Sider className={c.sider}>
                         <Navbar/>
-                        <FriendsContainer/>
+                        {
+                            this.props.isAuth && <FriendsContainer/>
+                        }
                     </Sider>
                     <Content>
                         <React.Suspense fallback={<Preloader/>}>
@@ -81,15 +83,15 @@ class App extends React.Component {
                                     render={() => <LoginPageContainer/>}
                                 />
                                 <Route
-                                    path='/news'
+                                    path='/:news'
                                     render={() => <News/>}
                                 />
                                 <Route
-                                    path='/music'
+                                    path='/:music'
                                     render={() => <Music/>}
                                 />
                                 <Route
-                                    path='/settings'
+                                    path='/:settings'
                                     render={() => <Settings/>}
                                 />
                                 <Route
@@ -106,7 +108,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    isInitialized: state.app.isInitialized
+    isInitialized: state.app.isInitialized,
+    isAuth: state.auth.isAuth
 });
 
 const AppContainer = compose(
