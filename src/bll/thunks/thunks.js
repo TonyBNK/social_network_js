@@ -57,6 +57,13 @@ export const updateMyPhoto = (newPhoto) =>
 export const saveProfile = (profile) =>
     async (dispatch, getState) => {
         try {
+            debugger
+            const profileCopy = {
+                ...profile,
+                contacts: {
+
+                }
+            }
             const response = await profileAPI.saveProfile(profile);
             if (response.data.resultCode === 0) {
                 dispatch(getUserProfile(getState().auth.userId));

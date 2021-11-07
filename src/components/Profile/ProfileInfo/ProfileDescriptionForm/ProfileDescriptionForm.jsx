@@ -1,70 +1,51 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input, Textarea} from "../../../common/forms-controls/FormsControls";
 import c from "./ProfileDescriptionForm.module.scss";
+import {Form, Button, Checkbox, Input} from 'antd';
 
 
 const ProfileDescriptionForm = (
     {
-        handleSubmit,
-        initialValues,
-        error
+        onSubmit,
+        initialValues
     }
 ) => {
-  return(
-      <form onSubmit={handleSubmit}>
-          <div className={c.fullName}>
-              <b>Full name</b>: <Field
-                  component={Input}
-                  type={'text'}
-                  name={'fullName'}
-                  placeholder={'Full name'}
-              />
-          </div>
-          <div>
-              <b>About me</b>: <Field
-              component={Textarea}
-              name={'aboutMe'}
-              placeholder={'About me...'}
-          />
-          </div>
-          <div>
-              <b>Looking for a job</b>: <Field
-              component={Input}
-              type={'checkbox'}
-              name={'lookingForAJob'}
-          />
-          </div>
-          <div>
-              <b>Looking for a job description</b>: <Field
-              component={Textarea}
-              name={'lookingForAJobDescription'}
-              placeholder={'Description...'}
-          />
-          </div>
-          <div>
-              <b>Contacts</b>: {
-              Object.keys(initialValues.contacts).map(key =>
-                  <Field
-                      key={key}
-                      component={Input}
-                      type={'text'}
-                      name={`contacts.${key}`}
-                      placeholder={key}
-                  />
-              )
-          }
-          </div>
-          {
-              error && <div className={c.errorMessage}>
-                  {error}
-              </div>
-          }
-          <div>
-              <button>Save</button>
-          </div>
-      </form>
-  )
+    debugger
+    return (
+        <Form onFinish={onSubmit} size='small' className={c.form}
+              initialValues={initialValues}>
+            <Form.Item label="Full name" name="fullName"
+                       rules={[{
+                           required: true,
+                           message: 'Please input your full name!'
+                       }]}>
+                <Input/>
+            </Form.Item>
+            <Form.Item label="About me" name="aboutMe">
+                <Input.TextArea/>
+            </Form.Item>
+            <Form.Item label="Looking for a job" name="lookingForAJob">
+                <Checkbox checked={initialValues.lookingForAJob}/>
+            </Form.Item>
+            <Form.Item label="Description" name="lookingForAJobDescription">
+                <Input.TextArea/>
+            </Form.Item>
+            {
+                Object.keys(initialValues.contacts).map(key =>
+                    <Form.Item
+                        label={key}
+                        key={key}
+                        name={`contacts.${key}`}
+                    >
+                        <Input/>
+                    </Form.Item>
+                )
+            }
+            <div>
+                <button>Save</button>
+            </div>
+        </Form>
+    )
 }
 
 export default reduxForm({form: 'profileDescription'})(ProfileDescriptionForm);
