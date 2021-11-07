@@ -6,8 +6,8 @@ import avatar from "../../../images/catUser.png";
 import {ProfileDescription} from "./ProfileDescription/ProfileDescription";
 import ProfileDescriptionForm
     from "./ProfileDescriptionForm/ProfileDescriptionForm";
-import {Avatar, Button, Upload} from 'antd';
-import {UploadOutlined} from '@ant-design/icons';
+import {Avatar, Button} from 'antd';
+import {EditOutlined} from "@ant-design/icons";
 
 
 export const ProfileInfo = React.memo((
@@ -50,17 +50,15 @@ export const ProfileInfo = React.memo((
                 status={status}
                 updateMyStatus={updateMyStatus}
             />
-            {
-                isOwner && <button onClick={() => setEditMode(true)}>
-                    Edit
-                </button>
+            <div className={c.descriptionContainer}>{
+                isOwner && <Button onClick={() => setEditMode(true)} shape='circle' icon={<EditOutlined />}/>
             }
-            {
-                editMode
-                    ? <ProfileDescriptionForm initialValues={profile}
-                                              onSubmit={onSubmitForm}/>
-                    : <ProfileDescription profile={profile}/>
-            }
+                {
+                    editMode
+                        ? <ProfileDescriptionForm initialValues={profile}
+                                                  onSubmit={onSubmitForm}/>
+                        : <ProfileDescription profile={profile}/>
+                }</div>
         </div>
     );
 });
@@ -72,8 +70,8 @@ export const Contact = (
     }
 ) => {
     return (
-        <div className={c.contact}>
+        <p className={c.contact}>
             <b>{contactTitle}</b>: {contactValue}
-        </div>
+        </p>
     )
 }

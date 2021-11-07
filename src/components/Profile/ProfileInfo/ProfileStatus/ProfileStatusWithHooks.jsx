@@ -29,7 +29,7 @@ const ProfileStatusWithHooks = React.memo((
     }
 
     return (
-        <div className={c.profileStatus}>
+        <div className={c.statusContainer}>
             {
                 editMode
                     ? <div>
