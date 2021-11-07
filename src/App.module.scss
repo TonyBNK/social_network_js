@@ -1,7 +1,15 @@
-.mainContainer{
+.mainContainer {
+  padding-top: 20px;
+  margin: auto;
+  width: 100vh;
+  border-radius: 5px;
+
+  .bodyContainer {
+    .sider {
+      background-color: inherit;
+      margin-right: 20px;
+    }
+  }
 
 }
 
-.sider{
-  background-color: inherit;
-}

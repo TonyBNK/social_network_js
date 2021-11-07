@@ -21,6 +21,7 @@ import c from "./App.module.scss";
 import {Layout, Menu} from "antd";
 import 'antd/dist/antd.css';
 import {FriendsContainer} from "./components/Friends/FriendsContainer";
+import logo from "./images/logo.png";
 
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
@@ -28,7 +29,7 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const LoginPageContainer = React.lazy(() => import('./components/Login/LoginPageContainer'));
 
 
-const {Header, Content, Sider, Footer} = Layout;
+const {Content, Sider, Footer} = Layout;
 
 class App extends React.Component {
     catchAllUnhandledErrors = () => {
@@ -51,9 +52,7 @@ class App extends React.Component {
 
         return (
             <Layout className={c.mainContainer}>
-                <Header className={c.header}>
-                    <HeaderContainer/>
-                </Header>
+                <HeaderContainer/>
                 <Layout className={c.bodyContainer}>
                     <Sider className={c.sider}>
                         <Navbar/>

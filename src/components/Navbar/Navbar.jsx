@@ -7,7 +7,9 @@ import {Menu} from "antd";
 export const Navbar = React.memo(() => {
     return (
         <Menu theme='light' mode='inline'
-              defaultSelectedKeys={['1']}>
+              defaultSelectedKeys={['1']}
+              className={c.navbarMenu}
+        >
             <Menu.Item key='1'>
                 <NavLink
                     to='/profile'
@@ -50,9 +52,7 @@ export const Navbar = React.memo(() => {
                     Settings
                 </NavLink>
             </Menu.Item>
-            <Menu.Item key='7'>
-                {/*<FriendsContainer/>*/}
-            </Menu.Item>
+            {/*<FriendsContainer/>*/}
         </Menu>
     );
 });
