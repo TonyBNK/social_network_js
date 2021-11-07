@@ -22,11 +22,10 @@ export const Header = (
         <HeaderAntD className={c.headerContainer}>
             <img src={logo} alt="логотип"/>
             <header>Catbook</header>
-            <Menu theme='dark' mode='horizontal' style={{position: 'relative'}}>
-                <Menu.Item style={{position: 'absolute', right: 0}}>
+            <Menu theme='dark' mode='horizontal' style={{position: 'relative'}} selectedKeys={null}>
+                <Menu.Item key='1' style={{position: 'absolute', right: 0}}>
                     {
                         isAuth
-                            // ? <button onClick={logOutHandler}>Logout</button>
                             ? <NavLink to={'/login'} onClick={logOutHandler}>Sign
                                 Out</NavLink>
                             : <NavLink to={'/login'}>Sign In</NavLink>

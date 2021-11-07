@@ -56,6 +56,7 @@ class App extends React.Component {
                 <Layout className={c.bodyContainer}>
                     <Sider className={c.sider}>
                         <Navbar/>
+                        <FriendsContainer/>
                     </Sider>
                     <Content>
                         <React.Suspense fallback={<Preloader/>}>

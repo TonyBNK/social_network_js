@@ -52,7 +52,6 @@ export const Navbar = React.memo(() => {
                     Settings
                 </NavLink>
             </Menu.Item>
-            {/*<FriendsContainer/>*/}
         </Menu>
     );
 });

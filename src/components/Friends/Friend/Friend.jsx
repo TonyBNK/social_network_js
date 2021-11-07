@@ -8,7 +8,7 @@ export const Friend = (
     }
 ) => {
     return(
-      <div className={c.friend}>
+      <div className={c.friendContainer}>
           <img src={ava} alt="ava"/>
           <div>{name}</div>
       </div>
