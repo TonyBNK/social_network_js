@@ -6,6 +6,8 @@ import avatar from "../../../images/catUser.png";
 import {ProfileDescription} from "./ProfileDescription/ProfileDescription";
 import ProfileDescriptionForm
     from "./ProfileDescriptionForm/ProfileDescriptionForm";
+import {Avatar, Button, Upload} from 'antd';
+import {UploadOutlined} from '@ant-design/icons';
 
 
 export const ProfileInfo = React.memo((
@@ -33,12 +35,15 @@ export const ProfileInfo = React.memo((
     }
 
     return (
-        <div className={c.info}>
-            <div className={c.avatar}>
-                <img src={profile.photos.large || avatar} alt="ava"/>
+        <div className={c.infoContainer}>
+            <div className={c.avatarContainer}>
+                <Avatar size={150} src={profile.photos.large || avatar}/>
                 {
                     isOwner &&
-                    <input type="file" onChange={oMainPhotoSelected}/>
+                    <>
+                        <div className={c.overlay}></div>
+                        <input type="file" onChange={oMainPhotoSelected}/>
+                    </>
                 }
             </div>
             <ProfileStatus
@@ -52,7 +57,8 @@ export const ProfileInfo = React.memo((
             }
             {
                 editMode
-                    ? <ProfileDescriptionForm initialValues={profile} onSubmit={onSubmitForm}/>
+                    ? <ProfileDescriptionForm initialValues={profile}
+                                              onSubmit={onSubmitForm}/>
                     : <ProfileDescription profile={profile}/>
             }
         </div>
