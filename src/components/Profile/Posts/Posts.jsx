@@ -17,6 +17,7 @@ export const Posts = (
         <Post
             key={p.id}
             ava={p.ava}
+            name={p.name}
             post={p.post}
             likesCount={p.likesCount}
         />
