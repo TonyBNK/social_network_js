@@ -5,6 +5,7 @@ import {Message} from "./Message/Message";
 import {Field, reduxForm} from "redux-form";
 import {Textarea} from "../common/forms-controls/FormsControls";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {Button, Form, Input} from 'antd';
 
 
 const maxLength50 = maxLengthCreator(50);
@@ -34,8 +35,8 @@ export const Dialogs = (
     }
 
     return (
-        <div className={c.dialogs}>
-            <div className={c.dialogsItems}>
+        <div className={c.dialogsContainer}>
+            <div className={c.dialogs}>
                 {dialogsList}
             </div>
             <div className={c.messages}>
@@ -48,24 +49,23 @@ export const Dialogs = (
 
 const NewMessageForm = React.memo((
     {
-        handleSubmit
+        onSubmit
     }
 ) => {
     return (
-        <form
-            className={c.newMessage}
-            onSubmit={handleSubmit}
-        >
-            <Field
-                component={Textarea}
-                name={'newMessageText'}
-                placeholder={'Type new message...'}
-                validate={[required, maxLength50]}
-            />
-            <button>
-                Send
-            </button>
-        </form>
+        <Form onFinish={onSubmit}>
+            <Form.Item name={'newMessageText'} rules={[
+                {required: true, message: "Field is required!"},
+                {max: 50, message: 'Max length of message is 50 symbols!'}
+            ]}>
+                <Input.TextArea placeholder={'Type new message...'}/>
+            </Form.Item>
+            <div className={c.buttonContainer}>
+                <Button type='primary' htmlType='submit'>
+                    Send
+                </Button>
+            </div>
+        </Form>
     )
 });
 

@@ -2,7 +2,7 @@ import React from "react";
 import './App.module.scss';
 import {Navbar} from "./components/Navbar/Navbar";
 import {
-    BrowserRouter, NavLink,
+    BrowserRouter,
     Redirect,
     Route,
     Switch,
@@ -18,10 +18,9 @@ import {compose} from "redux";
 import {Preloader} from "./components/Preloader/Preloader";
 import {store} from "./bll/redux-store";
 import c from "./App.module.scss";
-import {Layout, Menu} from "antd";
+import {Layout} from "antd";
 import 'antd/dist/antd.css';
 import {FriendsContainer} from "./components/Friends/FriendsContainer";
-import logo from "./images/logo.png";
 
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
 const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
@@ -29,7 +28,7 @@ const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsCo
 const LoginPageContainer = React.lazy(() => import('./components/Login/LoginPageContainer'));
 
 
-const {Content, Sider, Footer} = Layout;
+const {Content, Sider} = Layout;
 
 class App extends React.Component {
     catchAllUnhandledErrors = () => {
