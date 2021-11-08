@@ -32,18 +32,14 @@ const ProfileStatusWithHooks = React.memo((
         <div className={c.statusContainer}>
             {
                 editMode
-                    ? <div>
-                        <input
-                            value={profileStatus}
-                            onBlur={deactivateEditMode}
-                            autoFocus
-                            onChange={updateStatusLocally}/>
-                    </div>
-                    : <div>
-                            <span onClick={activateEditMode}>
+                    ? <input
+                        value={profileStatus}
+                        onBlur={deactivateEditMode}
+                        autoFocus
+                        onChange={updateStatusLocally}/>
+                    : <span onClick={activateEditMode}>
                             {status}
                     </span>
-                    </div>
             }
         </div>
     )
