@@ -51,7 +51,9 @@ export const ProfileInfo = React.memo((
                 updateMyStatus={updateMyStatus}
             />
             <div className={c.descriptionContainer}>{
-                isOwner && <Button onClick={() => setEditMode(true)} shape='circle' icon={<EditOutlined />}/>
+                isOwner &&
+                <Button onClick={() => setEditMode(true)} shape='circle'
+                        icon={<EditOutlined/>}/>
             }
                 {
                     editMode

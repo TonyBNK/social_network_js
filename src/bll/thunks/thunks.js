@@ -57,14 +57,16 @@ export const updateMyPhoto = (newPhoto) =>
 export const saveProfile = (profile) =>
     async (dispatch, getState) => {
         try {
-            debugger
-            const profileCopy = {
-                ...profile,
-                contacts: {
-
-                }
-            }
-            const response = await profileAPI.saveProfile(profile);
+            const formData = {
+                contacts: {}
+            };
+            const properties = Object.getOwnPropertyNames(profile);
+            properties.forEach(propName => {
+                propName.includes('contacts.')
+                    ? formData.contacts[propName.slice(9)] = profile[propName]
+                    : formData[propName] = profile[propName];
+            });
+            const response = await profileAPI.saveProfile(formData);
             if (response.data.resultCode === 0) {
                 dispatch(getUserProfile(getState().auth.userId));
                 dispatch(setEditMode(false));

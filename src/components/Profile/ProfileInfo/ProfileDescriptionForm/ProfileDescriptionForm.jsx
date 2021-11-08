@@ -10,7 +10,6 @@ const ProfileDescriptionForm = (
         initialValues
     }
 ) => {
-    debugger
     return (
         <Form onFinish={onSubmit} size='small' className={c.form}
               initialValues={initialValues}>
@@ -31,14 +30,15 @@ const ProfileDescriptionForm = (
                 <Input.TextArea/>
             </Form.Item>
             {
-                Object.keys(initialValues.contacts).map(key =>
-                    <Form.Item
-                        label={key}
-                        key={key}
-                        name={`contacts.${key}`}
-                    >
-                        <Input/>
-                    </Form.Item>
+                Object.keys(initialValues.contacts).map(key => {
+                        return <Form.Item
+                            label={key}
+                            key={key}
+                            name={`contacts.${key}`}
+                        >
+                            <Input/>
+                        </Form.Item>
+                    }
                 )
             }
             <div>
