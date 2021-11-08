@@ -1,8 +1,8 @@
 import React from "react";
 import {Field, reduxForm} from "redux-form";
-import {Input} from "../common/forms-controls/FormsControls";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 import c from './LoginPage.module.scss';
+import {Button, Form, Input, Checkbox} from 'antd';
 
 
 const maxLength30 = maxLengthCreator(30);
@@ -18,8 +18,10 @@ export const LoginPage = (
     }
 
     return (
-        <div>
-            <h1>Login</h1>
+        <div className={c.loginContainer}>
+            <div className={c.titleContainer}>
+                Sign In
+            </div>
             <LoginReduxForm onSubmit={submitLogIn} captchaURL={captchaURL}/>
         </div>
     )
@@ -27,59 +29,41 @@ export const LoginPage = (
 
 const LoginForm = React.memo((
     {
-        handleSubmit,
-        error,
+        onSubmit,
         captchaURL
     }
 ) => {
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <Field
-                    component={Input}
-                    type={'text'}
-                    placeholder={'Login'}
-                    name={'login'}
-                    validate={[required, maxLength30]}
-                />
-            </div>
-            <div>
-                <Field
-                    component={Input}
-                    type={'password'}
-                    placeholder={'Password'}
-                    name={'password'}
-                    validate={[required, maxLength30]}
-                />
-            </div>
+        <Form onFinish={onSubmit}>
+            <Form.Item name='login' rules={[
+                {required: true, message: "Login is required!"},
+                {max: 30, message: 'Max length of login is 30 symbols!'}
+            ]}>
+                <Input placeholder='Login'/>
+            </Form.Item>
+            <Form.Item name='password' rules={[
+                {required: true, message: "Password is required!"},
+                {max: 30, message: 'Max length of password is 30 symbols!'}
+            ]}>
+                <Input type='password' placeholder='Password'/>
+            </Form.Item>
+            <Form.Item name='rememberMe' label='Remember me'>
+                <Checkbox/>
+            </Form.Item>
             {
-                error && <div className={c.errorMessage}>
-                    {error}
-                </div>
-            }
-            <div>
-                <Field
-                    component={'input'}
-                    type={'checkbox'}
-                    name={'rememberMe'}
-                /> remember me
-            </div>
-            {
-                captchaURL && <div>
+                captchaURL && <div className={c.captchaContainer}>
                     <img src={captchaURL} alt="captcha"/>
-                    <Field
-                        component={Input}
-                        type={'captcha'}
-                        placeholder={'Captcha'}
-                        name={'captcha'}
-                        validate={[required]}
-                    />
+                    <Form.Item name='captcha' rules={[
+                        {required: true, message: "Captcha is required!"}
+                    ]}>
+                        <Input type='captcha' placeholder='Captcha'/>
+                    </Form.Item>
                 </div>
             }
-            <div>
-                <button>Login</button>
+            <div className={c.buttonContainer}>
+                <Button type='primary' htmlType='submit'>Login</Button>
             </div>
-        </form>
+        </Form>
     )
 });
 
