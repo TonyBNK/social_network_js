@@ -11,6 +11,7 @@ export const FOLLOW = 'social_network/users/FOLLOW';
 export const UNFOLLOW = 'social_network/users/UNFOLLOW';
 export const SHOW_USERS = 'social_network/users/SHOW_USERS';
 export const CHANGE_CURRENT_PAGE = 'social_network/users/CHANGE_CURRENT_PAGE';
+export const CHANGE_PAGE_SIZE = 'social_network/users/CHANGE_PAGE_SIZE';
 export const SET_USERS_TOTAL_COUNT = 'social_network/users/SET_USERS_TOTAL_COUNT';
 export const SET_FETCHING = 'social_network/users/SET_FETCHING';
 export const SET_FOLLOWING_PROCESS = 'social_network/users/SET_FOLLOWING_PROCESS';
@@ -71,6 +72,10 @@ export const showUsers = (users) => ({
 export const changeCurrentPage = (currentPage) => ({
     type: CHANGE_CURRENT_PAGE,
     currentPage
+});
+export const changePageSize = (pageSize) => ({
+    type: CHANGE_PAGE_SIZE,
+    pageSize
 });
 export const setUsersTotalCount = (usersTotalCount) => ({
     type: SET_USERS_TOTAL_COUNT,

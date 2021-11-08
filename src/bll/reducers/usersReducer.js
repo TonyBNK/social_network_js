@@ -1,5 +1,6 @@
 import {
     CHANGE_CURRENT_PAGE,
+    CHANGE_PAGE_SIZE,
     FOLLOW,
     SET_FETCHING,
     SET_FOLLOWING_PROCESS,
@@ -41,6 +42,11 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 currentPage: action.currentPage
             };
+        case CHANGE_PAGE_SIZE:
+            return {
+                ...state,
+                pageSize: action.pageSize
+            }
         case SET_USERS_TOTAL_COUNT:
             return {
                 ...state,

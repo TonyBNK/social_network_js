@@ -4,7 +4,6 @@ import {Users} from "./Users";
 import {Preloader} from "../Preloader/Preloader";
 import {
     getCurrentPage, getFollowingInProgress,
-    getPageSize,
     getUsers, getUsersTotalCount
 } from "../../bll/selectors/usersSelector";
 import {compose} from "redux";
@@ -52,7 +51,6 @@ class UsersContainer extends React.PureComponent {
 const mapStateToProps = (state) => ({
     users: getUsers(state),
     currentPage: getCurrentPage(state),
-    pageSize: getPageSize(state),
     usersTotalCount: getUsersTotalCount(state),
     followingInProgress: getFollowingInProgress(state)
 });

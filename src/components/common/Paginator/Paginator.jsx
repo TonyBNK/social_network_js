@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import c from "./Paginator.module.scss";
+import {Pagination} from 'antd';
 
 
 export const Paginator = React.memo((
@@ -48,19 +49,31 @@ export const Paginator = React.memo((
             )
         });
 
+    const onPageChange = page => {
+        console.log(page);
+        // this.setState({
+        //     current: page,
+        // });
+    };
+    const onPageSizeChange = pageSize => {
+        console.log(pageSize)
+    };
+
     return (
-        <div className={c.paginatorContainer}>
-            <button
-                onClick={onPreviousClick}
-                disabled={portionNumber <= 1}>
-                previous
-            </button>
-            {pagesList}
-            <button
-                onClick={onNextClick}
-                disabled={portionCount <= portionNumber}>
-                next
-            </button>
-        </div>
+        <Pagination current={currentPage} onChange={onPageChange}
+                    total={itemsTotalCount}/>
+        // <div className={c.paginatorContainer}>
+        //     <button
+        //         onClick={onPreviousClick}
+        //         disabled={portionNumber <= 1}>
+        //         previous
+        //     </button>
+        //     {pagesList}
+        //     <button
+        //         onClick={onNextClick}
+        //         disabled={portionCount <= portionNumber}>
+        //         next
+        //     </button>
+        // </div>
     )
 });

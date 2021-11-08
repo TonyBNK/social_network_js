@@ -1,16 +1,13 @@
 import React from "react";
 import c from './Users.module.scss';
-import catUser from '../../images/catUser.png';
-import {NavLink} from "react-router-dom";
-import {Paginator} from "../common/Paginator/Paginator";
 import {User} from "./User/User";
+import {Button, Pagination} from "antd";
 
 
 export const Users = React.memo((
     {
         users,
         currentPage,
-        pageSize,
         usersTotalCount,
         follow,
         unfollow,
@@ -32,23 +29,25 @@ export const Users = React.memo((
         }
     );
 
+    const onChange = (currentPage, pageSize) => {
+        requestUsers(currentPage, pageSize);
+    };
+
     return (
-        <div className={c.users}>
-            <div className={c.title}>
-                <h3>Users</h3>
-                <Paginator
-                    currentPage={currentPage}
-                    pageSize={pageSize}
-                    itemsTotalCount={usersTotalCount}
-                    requestItems={requestUsers}
-                />
+        <div className={c.usersContainer}>
+            <div className={c.titleContainer}>
+                Users
             </div>
-            <span>
+            <div className={c.bodyContainer}>
                 {usersList}
-            </span>
-            <button className={c.show}>
-                Show more
-            </button>
+            </div>
+            <div className={c.moreUsersContainer}>
+                <Button type='primary' shape='round' size='large'>
+                    Show more
+                </Button>
+                <Pagination current={currentPage} onChange={onChange}
+                            total={usersTotalCount} onShowSizeChange={onChange}/>
+            </div>
         </div>
     )
 });

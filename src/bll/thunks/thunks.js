@@ -8,7 +8,7 @@ import {
 import {
     changeCurrentPage, follow, getUser, setInitialized, setAuthenticated,
     setFetching, setFollowingProcess, setMyStatus, setUsersTotalCount,
-    showUsers, unfollow, setMyPhoto, setEdit, getCaptcha
+    showUsers, unfollow, setMyPhoto, setEdit, getCaptcha, changePageSize
 } from "../actions/actions";
 import {stopSubmit} from "redux-form";
 import {followUnfollowFlow} from "../../utils/utils";
@@ -87,11 +87,12 @@ export const setEditMode = (isEdit) =>
         }
     };
 
-export const requestUsers = (page = 1, pageSize) =>
+export const requestUsers = (page = 1, pageSize = 10) =>
     async (dispatch) => {
         try {
             dispatch(setFetching(true));
             dispatch(changeCurrentPage(page));
+            dispatch(changePageSize(pageSize));
             const data = await usersAPI.getUsers(page, pageSize);
             dispatch(setFetching(false));
             dispatch(showUsers(data.items));
