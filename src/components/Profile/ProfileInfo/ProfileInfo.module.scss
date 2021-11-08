@@ -65,10 +65,12 @@
   .descriptionContainer {
     position: relative;
 
-    button{
-      position: absolute;
-      right: 0;
-      top: 0;
+    .ownerContainer {
+      button {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
     }
   }
 }

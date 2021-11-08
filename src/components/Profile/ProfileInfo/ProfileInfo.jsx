@@ -50,17 +50,23 @@ export const ProfileInfo = React.memo((
                 status={status}
                 updateMyStatus={updateMyStatus}
             />
-            <div className={c.descriptionContainer}>{
-                isOwner &&
-                <Button onClick={() => setEditMode(true)} shape='circle'
-                        icon={<EditOutlined/>}/>
-            }
+            <div className={c.descriptionContainer}>
+                {
+                    (isOwner && !editMode) &&
+                    <div className={c.ownerContainer}>
+                        <Button onClick={() => setEditMode(true)}
+                                shape='circle'
+                                icon={<EditOutlined/>}/>
+                    </div>
+                }
                 {
                     editMode
                         ? <ProfileDescriptionForm initialValues={profile}
-                                                  onSubmit={onSubmitForm}/>
+                                                  onSubmit={onSubmitForm}
+                                                  cancelEditMode={() => setEditMode(false)}/>
                         : <ProfileDescription profile={profile}/>
-                }</div>
+                }
+            </div>
         </div>
     );
 });
