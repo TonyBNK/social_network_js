@@ -7,6 +7,7 @@ import {
     DislikeFilled,
     LikeFilled
 } from '@ant-design/icons';
+import c from "./Post.module.scss";
 
 
 export const Post = (
@@ -52,20 +53,22 @@ export const Post = (
     ];
 
     return (
-        <Comment
-            actions={actions}
-            author={<a>{name || 'TonyBNK'}</a>}
-            avatar={<Avatar src={ava} alt="ava"/>}
-            content={
-                <p>
-                    {post}
-                </p>
-            }
-            datetime={
-                <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                    <span>{moment().fromNow()}</span>
-                </Tooltip>
-            }
-        />
+        <div className={c.commentContainer}>
+            <Comment
+                actions={actions}
+                author={<a>{name || 'TonyBNK'}</a>}
+                avatar={<Avatar src={ava} alt="ava"/>}
+                content={
+                    <p>
+                        {post}
+                    </p>
+                }
+                datetime={
+                    <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
+                        <span>{moment().fromNow()}</span>
+                    </Tooltip>
+                }
+            />
+        </div>
     );
 }

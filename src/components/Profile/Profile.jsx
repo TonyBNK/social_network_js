@@ -17,7 +17,7 @@ export const Profile = (
     }
 ) => {
     return (
-        <div className={c.profile}>
+        <div className={c.profileContainer}>
             <ProfileInfo
                 isOwner={isOwner}
                 profile={profile}

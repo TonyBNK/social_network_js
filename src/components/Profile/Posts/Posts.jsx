@@ -1,11 +1,9 @@
 import React from "react";
 import c from "./Posts.module.scss";
 import {Post} from "./Post/Post";
-import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../../common/forms-controls/FormsControls";
-import {maxLengthCreator, required} from "../../../utils/validators/validators";
+import {reduxForm} from "redux-form";
+import {Button, Form, Input} from 'antd';
 
-const maxLength20 = maxLengthCreator(20);
 
 export const Posts = (
     {
@@ -26,11 +24,13 @@ export const Posts = (
     const submitAddNewPost = (values) => addNewPost(values.newPostText);
 
     return (
-        <div className={c.allPosts}>
-            <h3 className={c.title}>
-                My Posts
-            </h3>
-            <NewPostReduxForm onSubmit={submitAddNewPost}/>
+        <div className={c.postsContainer}>
+            <div className={c.createNewPostContainer}>
+                <div className={c.titleContainer}>
+                    My Posts
+                </div>
+                <NewPostReduxForm onSubmit={submitAddNewPost}/>
+            </div>
             <div>
                 {postsList}
             </div>
@@ -40,25 +40,23 @@ export const Posts = (
 
 const NewPostForm = React.memo((
     {
-        handleSubmit
+        onSubmit
     }
 ) => {
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <Field
-                    component={Textarea}
-                    placeholder={'Add new post...'}
-                    name={'newPostText'}
-                    validate={[required, maxLength20]}
-                />
+        <Form onFinish={onSubmit}>
+            <Form.Item name={'newPostText'} rules={[
+                {required: true, message: "Field is required!"},
+                {max: 20, message: 'Max length of post is 20 symbols!'}
+            ]}>
+                <Input.TextArea placeholder={'Add new post...'}/>
+            </Form.Item>
+            <div className={c.buttonContainer}>
+                <Button type='primary' htmlType='submit'>
+                    Post
+                </Button>
             </div>
-            <div>
-                <button>
-                    Send
-                </button>
-            </div>
-        </form>
+        </Form>
     )
 });
 

@@ -1,7 +1,7 @@
 import React from "react";
-import {Field, reduxForm} from "redux-form";
+import {reduxForm} from "redux-form";
 import c from "./ProfileDescriptionForm.module.scss";
-import {Form, Button, Checkbox, Input} from 'antd';
+import {Button, Checkbox, Form, Input} from 'antd';
 import {CheckOutlined, CloseOutlined} from "@ant-design/icons";
 
 
@@ -48,10 +48,10 @@ const ProfileDescriptionForm = (
                 )
             }
             <div className={c.buttonsContainer}>
-                <Button onClick={onCancelClick} type='ghost'
-                        icon={<CloseOutlined/>} shape='round' style={{backgroundColor: 'red'}}/>
-                <Button type='ghost' htmlType='submit'
-                        icon={<CheckOutlined/>} shape='round' style={{backgroundColor: 'green'}}/>
+                <Button onClick={onCancelClick} icon={<CloseOutlined/>}
+                        shape='round' style={{backgroundColor: 'red'}}/>
+                <Button htmlType='submit' icon={<CheckOutlined/>}
+                        shape='round' style={{backgroundColor: 'green'}}/>
             </div>
         </Form>
     )

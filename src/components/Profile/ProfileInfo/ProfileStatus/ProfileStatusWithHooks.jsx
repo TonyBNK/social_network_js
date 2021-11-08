@@ -40,7 +40,7 @@ const ProfileStatusWithHooks = React.memo((
                             onChange={updateStatusLocally}/>
                     </div>
                     : <div>
-                            <span onDoubleClick={activateEditMode}>
+                            <span onClick={activateEditMode}>
                             {status}
                     </span>
                     </div>
