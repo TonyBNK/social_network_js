@@ -1,4 +1,4 @@
-import {setFollowingProcess} from "../bll/actions/actions";
+import {setFollowingProcess} from "../redux/actions/actions";
 
 export const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
     try {

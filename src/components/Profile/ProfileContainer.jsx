@@ -8,7 +8,7 @@ import {
     getUserProfile,
     getUserStatus, saveProfile, setEditMode, updateMyPhoto,
     updateMyStatus
-} from "../../bll/thunks/thunks";
+} from "../../redux/thunks/thunks";
 
 class ProfileContainer extends React.PureComponent {
     refreshProfile(){

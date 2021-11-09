@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 import React from "react";
-import {addNewMessage} from "../../bll/actions/actions";
+import {addNewMessage} from "../../redux/actions/actions";
 
 const mapStateToProps = (state) => ({
     dialogs: state.dialogsPage.dialogs,

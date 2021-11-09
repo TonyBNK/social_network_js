@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {LoginPage} from "./LoginPage";
 import {compose} from "redux";
 import {withProfileRedirect} from "../../hoc/withProfileRedirect";
-import {logIn} from "../../bll/thunks/thunks";
+import {logIn} from "../../redux/thunks/thunks";
 
 class LoginPageContainer extends React.PureComponent {
 

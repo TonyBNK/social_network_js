@@ -2,13 +2,9 @@ import React from "react";
 import c from './Dialogs.module.scss';
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
-import {Field, reduxForm} from "redux-form";
-import {Textarea} from "../common/forms-controls/FormsControls";
-import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {reduxForm} from "redux-form";
 import {Button, Form, Input} from 'antd';
 
-
-const maxLength50 = maxLengthCreator(50);
 
 export const Dialogs = (
     {
@@ -35,15 +31,19 @@ export const Dialogs = (
     }
 
     return (
-        <div className={c.dialogsContainer}>
-            <div className={c.dialogs}>
-                {dialogsList}
+        <>
+            <div className={c.dialogsContainer}>
+                <div className={c.dialogs}>
+                    {dialogsList}
+                </div>
+                <div className={c.messages}>
+                    {messagesList}
+                </div>
             </div>
-            <div className={c.messages}>
-                {messagesList}
+            <div className={c.newMessageContainer}>
                 <NewMessageReduxForm onSubmit={submitAddNewMessage}/>
             </div>
-        </div>
+        </>
     );
 };
 

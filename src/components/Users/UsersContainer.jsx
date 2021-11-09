@@ -5,10 +5,10 @@ import {Preloader} from "../Preloader/Preloader";
 import {
     getCurrentPage, getFollowingInProgress,
     getUsers, getUsersTotalCount
-} from "../../bll/selectors/usersSelector";
+} from "../../redux/selectors/usersSelector";
 import {compose} from "redux";
-import {followUser, requestUsers, unfollowUser} from "../../bll/thunks/thunks";
-import {setFollowingProcess} from "../../bll/actions/actions";
+import {followUser, requestUsers, unfollowUser} from "../../redux/thunks/thunks";
+import {setFollowingProcess} from "../../redux/actions/actions";
 
 
 class UsersContainer extends React.PureComponent {

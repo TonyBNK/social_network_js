@@ -1,24 +1,10 @@
-//.dialog{
-//    align-self: auto;
-//    justify-self: left;
-//    display: grid;
-//    grid-template-columns: 70px 1fr;
-//}
-//
-//.dialog a{
-//    margin-left: 10px;
-//    color: white;
-//    text-decoration: none;
-//    align-self: center;
-//    justify-self: left;
-//}
-//
-//.dialog a.active {
-//    color: gold;
-//}
-//
-.dialog img{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
+.dialogContainer{
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    background-color: white;
+    border-radius: 5px;
+    width: 150px;
+    height: 80px;
+    padding-left: 10px;
 }

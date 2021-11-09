@@ -1,5 +1,5 @@
 import axios from "axios";
-import {saveProfile} from "../bll/thunks/thunks";
+import {saveProfile} from "../redux/thunks/thunks";
 
 const axiosInst = axios.create({
     baseURL: `https://social-network.samuraijs.com/api/1.0/`,
