@@ -1,7 +1,6 @@
 import React from "react";
 import c from "./Posts.module.scss";
 import {Post} from "./Post/Post";
-import {reduxForm} from "redux-form";
 import {Button, Form, Input} from 'antd';
 
 
@@ -29,7 +28,7 @@ export const Posts = (
                 <div className={c.titleContainer}>
                     My Posts
                 </div>
-                <NewPostReduxForm onSubmit={submitAddNewPost}/>
+                <NewPostForm onSubmit={submitAddNewPost}/>
             </div>
             <div>
                 {postsList}
@@ -59,7 +58,3 @@ const NewPostForm = React.memo((
         </Form>
     )
 });
-
-const NewPostReduxForm = reduxForm({
-    form: 'newPost'
-})(NewPostForm);

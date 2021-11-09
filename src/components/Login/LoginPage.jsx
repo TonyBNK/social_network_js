@@ -1,5 +1,4 @@
 import React from "react";
-import {reduxForm} from "redux-form";
 import c from './LoginPage.module.scss';
 import {Button, Checkbox, Form, Input} from 'antd';
 
@@ -19,7 +18,7 @@ export const LoginPage = (
             <div className={c.titleContainer}>
                 Sign In
             </div>
-            <LoginReduxForm onSubmit={submitLogIn} captchaURL={captchaURL}/>
+            <LoginForm onSubmit={submitLogIn} captchaURL={captchaURL}/>
         </div>
     )
 }
@@ -63,5 +62,3 @@ const LoginForm = React.memo((
         </Form>
     )
 });
-
-const LoginReduxForm = reduxForm({form: 'login'})(LoginForm);

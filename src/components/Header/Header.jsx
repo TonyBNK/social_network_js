@@ -22,7 +22,7 @@ export const Header = (
         <HeaderAntD className={c.headerContainer}>
             <img src={logo} alt="логотип"/>
             <header>Catbook</header>
-            <Menu theme='dark' mode='horizontal' style={{position: 'relative'}} selectedKeys={null}>
+            <Menu theme='dark' mode='horizontal' style={{position: 'relative'}}>
                 <Menu.Item key='1' style={{position: 'absolute', right: 0}}>
                     {
                         isAuth

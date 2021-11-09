@@ -1,5 +1,5 @@
 import React from "react";
-import c from './Message.module.scss';
+
 
 export const Message = React.memo((
     {
@@ -8,7 +8,7 @@ export const Message = React.memo((
     }
 ) => {
     return (
-        <div className={c.message}>
+        <div>
             {message}
         </div>
     );

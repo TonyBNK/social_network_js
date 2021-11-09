@@ -2,7 +2,6 @@ import React from "react";
 import c from './Dialogs.module.scss';
 import {Dialog} from "./Dialog/Dialog";
 import {Message} from "./Message/Message";
-import {reduxForm} from "redux-form";
 import {Button, Form, Input} from 'antd';
 
 
@@ -41,7 +40,7 @@ export const Dialogs = (
                 </div>
             </div>
             <div className={c.newMessageContainer}>
-                <NewMessageReduxForm onSubmit={submitAddNewMessage}/>
+                <NewMessageForm onSubmit={submitAddNewMessage}/>
             </div>
         </>
     );
@@ -68,7 +67,3 @@ const NewMessageForm = React.memo((
         </Form>
     )
 });
-
-const NewMessageReduxForm = reduxForm({
-    form: 'newMessage'
-})(NewMessageForm);

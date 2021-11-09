@@ -46,28 +46,6 @@ export const ProfileDescription = (
                     }
                 </TabPane>
             </Tabs>
-
-            {/*<div>*/}
-            {/*    <b>About me</b>: {profile.aboutMe}*/}
-            {/*</div>*/}
-            {/*<div className={c.jobSearch}>*/}
-            {/*    <b>Looking for a*/}
-            {/*        job</b>: {profile.lookingForAJob ? "I'm looking for a job!" : "I'm NOT looking for a job!"}*/}
-            {/*</div>*/}
-            {/*<div>*/}
-            {/*    <b>Looking for a job*/}
-            {/*        description</b>: {profile.lookingForAJobDescription}*/}
-            {/*</div>*/}
-            {/*<div className={c.contacts}>*/}
-            {/*    <b>Contacts</b>: {*/}
-            {/*    Object.keys(profile.contacts).map(key => profile.contacts[key] && <Contact*/}
-            {/*            key={key}*/}
-            {/*            contactTitle={key}*/}
-            {/*            contactValue={profile.contacts[key]}*/}
-            {/*        />*/}
-            {/*    )*/}
-            {/*}*/}
-            {/*</div>*/}
         </div>
     )
 }
