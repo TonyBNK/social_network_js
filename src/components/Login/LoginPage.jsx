@@ -1,11 +1,8 @@
 import React from "react";
-import {Field, reduxForm} from "redux-form";
-import {maxLengthCreator, required} from "../../utils/validators/validators";
+import {reduxForm} from "redux-form";
 import c from './LoginPage.module.scss';
-import {Button, Form, Input, Checkbox} from 'antd';
+import {Button, Checkbox, Form, Input} from 'antd';
 
-
-const maxLength30 = maxLengthCreator(30);
 
 export const LoginPage = (
     {
